@@ -1,0 +1,43 @@
+{
+  "name": "campussignal-server",
+  "version": "1.0.0",
+  "description": "CampusSignal API: room-by-room network quality",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "seed:campus": "node scripts/seed-campus.js",
+    "seed:demo": "node scripts/seed-demo.js --yes",
+    "purge:demo": "node scripts/purge-demo.js",
+    "qr": "node scripts/make-qr.js",
+    "preload": "node -e \"import('geolite2-redist').then(g => g.downloadDbs()).then(() => console.log('GeoLite2 databases ready'))\"",
+    "verify:0": "node verify/phase0-setup.js",
+    "verify:1": "node verify/phase1-database.js",
+    "verify:2": "node verify/phase2-carrier.js",
+    "verify:3": "node verify/phase3-speedtest.js",
+    "verify:4": "node verify/phase4-measurements.js",
+    "verify:5": "node verify/phase5-insights.js",
+    "verify:6": "node verify/phase6-live.js",
+    "verify:7": "node verify/phase7-qr.js",
+    "verify:8": "node verify/phase8-client.js",
+    "verify:9": "node verify/phase9-deploy.js",
+    "verify": "node verify/all.js"
+  },
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^18.0.9",
+    "express": "^5.3.0",
+    "geolite2-redist": "^4.0.0",
+    "maxmind": "^5.0.7",
+    "mongoose": "^9.11.4",
+    "qrcode": "^1.5.4",
+    "socket.io": "^4.8.4"
+  },
+  "devDependencies": {
+    "jsqr": "^1.4.0",
+    "pngjs": "^7.0.0",
+    "socket.io-client": "^4.8.4"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
