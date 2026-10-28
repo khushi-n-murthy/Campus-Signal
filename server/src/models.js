@@ -70,3 +70,62 @@ measurementSchema.index({ createdAt: -1 });
 export const Building = model('Building', buildingSchema);
 export const Room = model('Room', roomSchema);
 export const Measurement = model('Measurement', measurementSchema);
+
+// ---------- the game ----------
+// A player is a nickname + character on top of the same anonymous device id. No real names, no IPs.
+const playerSchema = new Schema(
+  {
+    device: { type: String, required: true, unique: true }, // salted hash, same as measurements
+    nickname: { type: String, required: true },
+    nickLower: { type: String, required: true, unique: true },
+    avatar: {
+      body: Number, skin: Number, hairStyle: Number, hairColor: Number, outfit: Number, outfitColor: Number, accessory: Number,
+    },
+    team: { type: String, default: null }, // the network they last tested on
+    xp: { type: Number, default: 0 },
+    scans: { type: Number, default: 0 },
+    rexSightings: { type: Number, default: 0 },
+    roomsSeen: { type: [String], default: [] },
+    streak: { type: Number, default: 0 },
+    lastDay: { type: String, default: null },
+    dinoBest: { type: Number, default: 0 },
+    badges: { type: [String], default: [] },
+    daily: {
+      day: String, scans: Number, rooms: [String], newRooms: Number, dinoXp: Number, bestRun: Number, quests: [String],
+    },
+    createdAt: { type: Date, default: Date.now },
+  },
+  { versionKey: false },
+);
+playerSchema.index({ xp: -1 });
+
+// Best Rex run per player per room.
+const runSchema = new Schema(
+  {
+    roomId: { type: String, required: true },
+    device: { type: String, required: true },
+    nickname: { type: String, required: true },
+    distance: { type: Number, required: true },
+    updatedAt: { type: Date, default: Date.now },
+  },
+  { versionKey: false },
+);
+runSchema.index({ roomId: 1, device: 1 }, { unique: true });
+runSchema.index({ roomId: 1, distance: -1 });
+
+export const Player = model('Player', playerSchema);
+export const Run = model('Run', runSchema);
+
+// Every time Rex's Lair opened: by a weak scan ('auto'), a dead-zone button ('manual') or no connection ('offline').
+const rexEventSchema = new Schema(
+  {
+    roomId: { type: String, default: null },
+    device: { type: String, required: true },
+    kind: { type: String, enum: ['auto', 'manual', 'offline'], required: true },
+    played: { type: Boolean, default: false }, // false = the player pressed End without running
+    at: { type: Date, default: Date.now },
+  },
+  { versionKey: false },
+);
+rexEventSchema.index({ roomId: 1, at: -1 });
+export const RexEvent = model('RexEvent', rexEventSchema);

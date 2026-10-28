@@ -8,6 +8,10 @@ import { withNet } from './lib/api.js';
 import { scoreWord } from './lib/colors.js';
 import { Stage } from './scenes/Stage.jsx';
 import { CampusWorld } from './scenes/CampusWorld.jsx';
+import { CSInterior } from './scenes/CSInterior.jsx';
+import { CS, roomsOnFloor } from './scenes/csLayout.js';
+import { InteriorPanel } from './components/InteriorPanel.jsx';
+import { useRoomScores } from './lib/useRoomScores.js';
 import { RoomInterior } from './scenes/RoomInterior.jsx';
 import { roomSize } from './scenes/layout.js';
 import { RoomCamera } from './scenes/RoomCamera.jsx';
@@ -15,6 +19,10 @@ import { PanelAwareView } from './scenes/SceneLook.jsx';
 import { LabelLayerContext } from './scenes/Label.jsx';
 import { Legend, NetLink, NetworkCard, NetworkFilter, ScoreBadge } from './components/Bits.jsx';
 import { ForecastStrip } from './components/ForecastStrip.jsx';
+import PlayerChip from './game/PlayerChip.jsx'; // GAME
+import RoomGameBox from './game/RoomGameBox.jsx'; // GAME
+import CampusGameBox from './game/CampusGameBox.jsx'; // GAME
+import LiveFeed from './game/LiveFeed.jsx'; // GAME
 
 const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
 
@@ -41,6 +49,7 @@ function TopBar({ view, building, room }) {
       </nav>
       <NetworkFilter />
       <div className="actions">
+        <PlayerChip /> {/* GAME */}
         <Link to="/test" className="button small">I'm here: test</Link>
         <Link to="/advisor" className="link">SIM Advisor</Link>
         <Link to="/admin" className="link">IT report</Link>
@@ -55,6 +64,7 @@ function CampusPanel({ campus, practice }) {
     <aside className="panel">
       <h2>Campus</h2>
       <p className="muted small">Tap a building to open its floors.</p>
+      <CampusGameBox /> {/* GAME */}
       {sorted.map((b) => (
         <NetLink key={b._id} to={`/b/${b._id}`} className="list-row">
           <span>
@@ -102,6 +112,7 @@ function RoomPanel({ room, forecast, shown, practice }) {
         {room.building?.name} · Floor {room.floor} · {room.totalSamples} tests in the last {room.windowDays} days
       </p>
       <Link to={`/t/${room._id}`} className="button">I'm in this room: test now</Link>
+      <RoomGameBox roomId={room._id} roomName={room.name} /> {/* GAME */}
       {room.networks.length === 0 && <p>No tests here yet. Be the first!</p>}
       {room.networks.map((n) => (
         <NetworkCard key={n.carrier} n={n} />
@@ -152,6 +163,15 @@ export default function ThreeView({ view, net, lite }) {
     return net === 'All' ? real.slice(0, 4) : real.filter((n) => n.carrier === net);
   }, [room.data, net]);
 
+  // CSE has a walk-through interior instead of the exploded-floors view.
+  const isCS = buildingId === CS.id;
+  const [csFloor, setCsFloor] = useState(0);
+  const [csMode, setCsMode] = useState('walk');
+  const [csHere, setCsHere] = useState(null);
+  const [csGoto, setCsGoto] = useState(null);
+  const csIds = useMemo(() => (isCS ? roomsOnFloor(csFloor).map((r) => r.id) : []), [isCS, csFloor]);
+  const csRooms = useRoomScores(csIds, buildingVersion);
+
   const error = campus.error || building.error || room.error;
   const go = (path) => navigate(net === 'All' ? path : `${path}?net=${encodeURIComponent(net)}`);
 
@@ -166,6 +186,18 @@ export default function ThreeView({ view, net, lite }) {
               <RoomInterior room={room.data} networks={shownNetworks} lite={lite} />
               <RoomCamera {...roomSize(room.data)} roomId={room.data._id} />
             </>
+          ) : isCS && building.data ? (
+            <CSInterior
+              footprint={building.data.footprint}
+              floor={csFloor}
+              mode={csMode}
+              roomScores={csRooms.scores}
+              net={net}
+              lite={lite}
+              onHere={setCsHere}
+              onRoom={(id) => go(`/r/${id}`)}
+              gotoRoom={csGoto}
+            />
           ) : view.kind !== 'room' && campus.data ? (
             <CampusWorld
               buildings={campus.data}
@@ -185,9 +217,29 @@ export default function ThreeView({ view, net, lite }) {
       <TopBar view={view} building={view.kind === 'room' ? roomBuilding : building.data} room={room.data} />
       {error && <div className="toast error">{error.status === 404 ? 'That place is not on the map.' : error.message}</div>}
       {view.kind === 'campus' && campus.data && <CampusPanel campus={campus.data} practice={health.data?.practiceData} />}
-      {view.kind === 'building' && building.data && <BuildingPanel detail={building.data} practice={health.data?.practiceData} />}
+      {view.kind === 'building' && building.data && !isCS && <BuildingPanel detail={building.data} practice={health.data?.practiceData} />}
+      {isCS && building.data && (
+        <InteriorPanel
+          name={building.data.name}
+          floor={csFloor}
+          setFloor={(f) => {
+            setCsFloor(f);
+            setCsGoto(null);
+          }}
+          mode={csMode}
+          setMode={setCsMode}
+          here={csHere}
+          roomScores={csRooms.scores}
+          details={csRooms.details}
+          net={net}
+          onGo={(id) => setCsGoto({ id, at: Date.now() })}
+          practice={health.data?.practiceData}
+        />
+      )}
+      {isCS && csMode === 'walk' && <div className="walk-hint">Drag to look · W A S D to walk · click the floor to go there</div>}
       {view.kind === 'room' && room.data && <RoomPanel room={room.data} forecast={forecast.data} shown={shownNetworks.map((n) => n.carrier)} practice={health.data?.practiceData} />}
       <Legend practice={health.data?.practiceData} />
+      <LiveFeed /> {/* GAME */}
     </>
   );
 }

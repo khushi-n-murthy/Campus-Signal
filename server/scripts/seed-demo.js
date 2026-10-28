@@ -28,10 +28,30 @@ const between = (lo, hi) => lo + rand() * (hi - lo);
 
 // Base download speed (Mbps) per network per building, to make the practice map interesting.
 const BASE = {
-  A: { Jio: 24, Airtel: 11, Vi: 6, 'Campus WiFi': 16 },
-  B: { Jio: 9, Airtel: 19, Vi: 8, 'Campus WiFi': 12 },
+  ADMIN: { Jio: 24, Airtel: 14, Vi: 7, 'Campus WiFi': 22 },
+  DTH: { Jio: 20, Airtel: 12, Vi: 6, 'Campus WiFi': 26 },
+  MECH: { Jio: 12, Airtel: 18, Vi: 5, 'Campus WiFi': 10 },
+  BIO: { Jio: 16, Airtel: 9, Vi: 4, 'Campus WiFi': 14 },
+  GH: { Jio: 8, Airtel: 6, Vi: 3, 'Campus WiFi': 4 },
+  IEM: { Jio: 10, Airtel: 8, Vi: 4, 'Campus WiFi': 18 },
+  KRIYA: { Jio: 18, Airtel: 15, Vi: 6, 'Campus WiFi': 20 },
+  RVU: { Jio: 14, Airtel: 20, Vi: 8, 'Campus WiFi': 16 },
+  TAC: { Jio: 9, Airtel: 6, Vi: 4, 'Campus WiFi': 5 },
+  BANK: { Jio: 22, Airtel: 18, Vi: 9, 'Campus WiFi': 12 },
+  CIVIL: { Jio: 19, Airtel: 10, Vi: 6, 'Campus WiFi': 15 },
+  EEE: { Jio: 13, Airtel: 17, Vi: 7, 'Campus WiFi': 19 },
+  ECE: { Jio: 21, Airtel: 13, Vi: 5, 'Campus WiFi': 24 },
+  PE: { Jio: 25, Airtel: 16, Vi: 10, 'Campus WiFi': 8 },
+  CSE: { Jio: 23, Airtel: 15, Vi: 6, 'Campus WiFi': 30 },
+  HC: { Jio: 15, Airtel: 12, Vi: 5, 'Campus WiFi': 11 },
+  KH: { Jio: 11, Airtel: 14, Vi: 5, 'Campus WiFi': 9 },
+  CBH: { Jio: 10, Airtel: 16, Vi: 4, 'Campus WiFi': 7 },
+  MATH: { Jio: 17, Airtel: 11, Vi: 6, 'Campus WiFi': 18 },
+  CHEM: { Jio: 9, Airtel: 19, Vi: 8, 'Campus WiFi': 12 },
+  TELE: { Jio: 20, Airtel: 13, Vi: 7, 'Campus WiFi': 21 },
+  MING: { Jio: 9, Airtel: 6, Vi: 4, 'Campus WiFi': 5 },
   LIB: { Jio: 15, Airtel: 12, Vi: 4, 'Campus WiFi': 28 },
-  CAN: { Jio: 9, Airtel: 6, Vi: 4, 'Campus WiFi': 5 },
+  ISE: { Jio: 18, Airtel: 14, Vi: 6, 'Campus WiFi': 25 },
 };
 
 await connectDb(config.mongoUri, config.dbName);
@@ -46,9 +66,9 @@ const devices = Array.from({ length: 40 }, (_, i) => `demo-device-${String(i).pa
 const docs = [];
 const now = Date.now();
 for (const room of rooms) {
-  const base = BASE[room.buildingId] || BASE.A;
+  const base = BASE[room.buildingId] || BASE.ADMIN;
   for (const [carrier, mbps] of Object.entries(base)) {
-    const deadZone = carrier === 'Jio' && room.buildingId === 'B' && room.floor === 2; // a deliberate dead zone
+    const deadZone = carrier === 'Jio' && room.buildingId === 'CHEM' && room.floor === 2; // a deliberate dead zone
     const count = (deadZone ? 45 : 10) + Math.floor(rand() * 25); // enough tests there to meet the IT-report rule
     for (let i = 0; i < count; i++) {
       const at = new Date(now - between(0, 14) * 24 * 3600 * 1000);

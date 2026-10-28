@@ -1,10 +1,12 @@
-// One colour language for the whole site: blue = strong, amber = weak, red = dead, grey = no data.
+// One colour language for the whole site: blue = strong, icy blue = good, amber = weak, red = dead, grey = no data.
+// The icy-blue stop at 65 keeps the amber -> cyan blend from passing through green.
 // Plain hex strings here (no three.js), so the light test page does not have to load the 3D library.
 
 const STOPS = [
   [0, '#ff3b5c'],
   [30, '#ff8a3d'],
   [55, '#ffd23f'],
+  [65, '#c9e6ff'],
   [75, '#3ddcff'],
   [100, '#4f7dff'],
 ];

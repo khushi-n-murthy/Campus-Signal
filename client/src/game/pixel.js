@@ -5,7 +5,7 @@
 export const INK = '#050b26';
 const PAL = {
   k: INK, w: '#f2f8ff', c: '#2de2ff', b: '#2f6bff', d: '#16205a', l: '#bfe6ff',
-  g: '#2cf08a', p: '#ff5fa2', y: '#ffd23f', o: '#ff9a3c', r: '#ff4d6d', s: '#7d8fb8',
+  g: '#5cc8ff', p: '#ff5fa2', y: '#ffd23f', o: '#ff9a3c', r: '#ff4d6d', s: '#7d8fb8',
 };
 
 // ---------- characters live in portrait.js ----------

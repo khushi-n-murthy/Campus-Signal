@@ -1,11 +1,11 @@
-// Runs phases 0-8 in order and stops at the first one that fails. (Phase 9 needs a deployed URL.)
+// Runs phases 0-8 and 10 (the game) in order and stops at the first one that fails. (Phase 9 needs a deployed URL.)
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
-const files = fs.readdirSync(here).filter((f) => /^phase[0-8]-.*\.js$/.test(f)).sort();
+const files = fs.readdirSync(here).filter((f) => /^phase(?:[0-8]|10)-.*\.js$/.test(f)).sort((a, b) => parseInt(a.slice(5), 10) - parseInt(b.slice(5), 10));
 for (const file of files) {
   const r = spawnSync(process.execPath, [path.join(here, file)], { stdio: 'inherit' });
   if (r.status !== 0) {
@@ -13,4 +13,4 @@ for (const file of files) {
     process.exit(1);
   }
 }
-console.log('\nALL LOCAL PHASES PASSED (0-8). After deploying, run: npm run verify:9 -- https://your-site');
+console.log('\nALL LOCAL PHASES PASSED (0-8 and 10). After deploying, run: npm run verify:9 -- https://your-site');

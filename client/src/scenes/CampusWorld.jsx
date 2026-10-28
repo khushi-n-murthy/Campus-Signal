@@ -2,14 +2,15 @@
 // splits apart floor by floor so every room can be picked.
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
-import { Grid, Sparkles, useCursor } from '@react-three/drei';
+import { Grid, useCursor } from '@react-three/drei';
 import { Label } from './Label.jsx';
-import { AdditiveBlending, BoxGeometry } from 'three';
+import { AdditiveBlending, BoxGeometry, BufferAttribute, BufferGeometry, CanvasTexture, RepeatWrapping, SRGBColorSpace } from 'three';
 import { scoreHex, scoreWord } from '../lib/colors.js';
 import { scoreColor } from './color3.js';
 import { SceneLook, lookAt } from './SceneLook.jsx';
+import { SitePlan } from './SitePlan.jsx';
 
-const CAMPUS_FOG = { color: '#070b16', near: 160, far: 520 };
+const CAMPUS_FOG = { color: '#040914', near: 280, far: 820 };
 
 export const FLOOR_HEIGHT = 3.6; // metres per storey on the campus view
 export const EXPLODE_GAP = 4; // extra space between floors when a building is opened
@@ -22,6 +23,44 @@ function GlowEdges({ w, h, d, color, opacity = 1 }) {
       <edgesGeometry args={[geo]} />
       <lineBasicMaterial color={color} toneMapped={false} transparent opacity={opacity} />
     </lineSegments>
+  );
+}
+
+// Glowing motes drifting upward inside a box (replaces drei <Sparkles>, whose shader blanked the
+// whole frame under the bloom pass). Plain points: cheap, and safe with post-processing.
+function Motes({ count, scale: [sx, sy, sz], position = [0, 0, 0], color, size = 0.25, speed = 0.5 }) {
+  const ref = useRef();
+  const geometry = useMemo(() => {
+    let seed = count * 97 + Math.round(sx * 13 + sy * 7);
+    const rand = () => {
+      seed = (seed * 16807) % 2147483647;
+      return seed / 2147483647;
+    };
+    const pos = new Float32Array(count * 3);
+    for (let i = 0; i < count; i++) {
+      pos[i * 3] = (rand() - 0.5) * sx;
+      pos[i * 3 + 1] = (rand() - 0.5) * sy;
+      pos[i * 3 + 2] = (rand() - 0.5) * sz;
+    }
+    const g = new BufferGeometry();
+    g.setAttribute('position', new BufferAttribute(pos, 3));
+    return g;
+  }, [count, sx, sy, sz]);
+  useEffect(() => () => geometry.dispose(), [geometry]);
+  useFrame((_, dt) => {
+    const attr = ref.current?.geometry.attributes.position;
+    if (!attr) return;
+    for (let i = 0; i < attr.count; i++) {
+      let y = attr.getY(i) + dt * speed;
+      if (y > sy / 2) y -= sy;
+      attr.setY(i, y);
+    }
+    attr.needsUpdate = true;
+  });
+  return (
+    <points ref={ref} geometry={geometry} position={position}>
+      <pointsMaterial color={color} size={size} sizeAttenuation transparent opacity={0.85} depthWrite={false} blending={AdditiveBlending} toneMapped={false} />
+    </points>
   );
 }
 
@@ -41,7 +80,78 @@ function Beacon({ height, color, lite }) {
         <torusGeometry args={[1.6, 0.06, 8, 48]} />
         <meshBasicMaterial color={color} toneMapped={false} />
       </mesh>
-      {!lite && <Sparkles count={18} scale={[4, beam, 4]} position={[0, beam / 2, 0]} size={4} speed={0.5} color={color} />}
+      {!lite && <Motes count={18} scale={[4, beam, 4]} position={[0, beam / 2, 0]} size={0.35} speed={1.2} color={color} />}
+    </group>
+  );
+}
+
+// Facade texture: 8 window bays (3 m each) for one storey. Some offices lit warm-white, some cool,
+// some dark, with frames and a spandrel band, so buildings read as real blocks at night.
+const BAY = 3;
+const FACADE = (() => {
+  if (typeof document === 'undefined') return null;
+  const bays = 8;
+  const c = document.createElement('canvas');
+  c.width = 64 * bays;
+  c.height = 80;
+  const g = c.getContext('2d');
+  let seed = 5;
+  const rand = () => {
+    seed = (seed * 16807) % 2147483647;
+    return seed / 2147483647;
+  };
+  g.clearRect(0, 0, c.width, c.height);
+  for (let i = 0; i < bays; i++) {
+    const x = i * 64;
+    const r = rand();
+    const fill = r < 0.45 ? 'rgba(255, 236, 205, 0.95)' : r < 0.7 ? 'rgba(190, 225, 255, 0.85)' : 'rgba(40, 70, 105, 0.55)';
+    g.fillStyle = fill;
+    g.fillRect(x + 8, 18, 48, 40);
+    g.fillStyle = 'rgba(10, 18, 30, 0.9)'; // mullion + transom
+    g.fillRect(x + 31, 18, 2, 40);
+    g.fillRect(x + 8, 30, 48, 2);
+  }
+  const tex = new CanvasTexture(c);
+  tex.wrapS = RepeatWrapping;
+  tex.colorSpace = SRGBColorSpace;
+  tex.anisotropy = 4;
+  return tex;
+})();
+
+function useFacade(length, offset) {
+  return useMemo(() => {
+    if (!FACADE) return null;
+    const t = FACADE.clone();
+    t.repeat.set(length / (BAY * 8), 1);
+    t.offset.set(offset, 0);
+    t.needsUpdate = true;
+    return t;
+  }, [length, offset]);
+}
+
+function FacadeSide({ length, position, rotation, floorH, floors, seed }) {
+  const map = useFacade(length, seed);
+  if (!map) return null;
+  return (
+    <group position={position} rotation={rotation}>
+      {Array.from({ length: floors }, (_, f) => (
+        <mesh key={f} position={[0, f * floorH + floorH / 2, 0]}>
+          <planeGeometry args={[length, floorH]} />
+          <meshBasicMaterial map={map} transparent opacity={0.85} depthWrite={false} toneMapped={false} color="#c8d6e6" />
+        </mesh>
+      ))}
+    </group>
+  );
+}
+
+function Facade({ w, d, floors }) {
+  const e = 0.04; // sit just outside the glass
+  return (
+    <group>
+      <FacadeSide length={w} floors={floors} floorH={FLOOR_HEIGHT} position={[0, 0, d / 2 + e]} rotation={[0, 0, 0]} seed={0.13} />
+      <FacadeSide length={w} floors={floors} floorH={FLOOR_HEIGHT} position={[0, 0, -d / 2 - e]} rotation={[0, Math.PI, 0]} seed={0.41} />
+      <FacadeSide length={d} floors={floors} floorH={FLOOR_HEIGHT} position={[w / 2 + e, 0, 0]} rotation={[0, Math.PI / 2, 0]} seed={0.67} />
+      <FacadeSide length={d} floors={floors} floorH={FLOOR_HEIGHT} position={[-w / 2 - e, 0, 0]} rotation={[0, -Math.PI / 2, 0]} seed={0.89} />
     </group>
   );
 }
@@ -71,13 +181,13 @@ function BuildingBlock({ b, dimmed, onSelect, lite }) {
       >
         <boxGeometry args={[w, H, d]} />
         <meshStandardMaterial
-          color="#0e1830"
+          color="#0a1a33"
           emissive={base}
-          emissiveIntensity={hover ? 0.6 : 0.22}
-          metalness={0.5}
-          roughness={0.25}
+          emissiveIntensity={hover ? 0.55 : 0.2}
+          metalness={0.6}
+          roughness={0.15}
           transparent
-          opacity={dimmed ? 0.08 : 0.72}
+          opacity={dimmed ? 0.08 : 0.5}
           depthWrite={!dimmed}
         />
       </mesh>
@@ -86,6 +196,7 @@ function BuildingBlock({ b, dimmed, onSelect, lite }) {
           <GlowEdges w={w} h={H} d={d} color={glow} />
         </group>
       )}
+      {!dimmed && <Facade w={w} d={d} floors={b.floors} />}
       {!dimmed &&
         Array.from({ length: b.floors - 1 }, (_, f) => (
           <mesh key={f} position={[0, (f + 1) * FLOOR_HEIGHT, 0]}>
@@ -99,7 +210,7 @@ function BuildingBlock({ b, dimmed, onSelect, lite }) {
         </group>
       )}
       {!dimmed && (
-        <Label position={[0, H + 2.5, 0]} center distanceFactor={90} zIndexRange={[10, 0]}>
+        <Label position={[0, H + 2.5, 0]} center distanceFactor={150} zIndexRange={[10, 0]}>
           <button type="button" className="tag" style={{ borderColor: scoreHex(score) }} onClick={() => onSelect(b._id)}>
             <b>{b.name}</b>
             <span>{score == null ? 'no data' : `${Math.round(score)} · ${scoreWord(score)}`}</span>
@@ -142,7 +253,7 @@ function RoomTile({ room, cx, cy, cz, pulseAt, onRoom, lite }) {
         <meshStandardMaterial color={scoreColor(score)} emissive={scoreColor(score)} emissiveIntensity={hover ? 1.1 : 0.45} transparent opacity={0.6} roughness={0.2} />
       </mesh>
       <GlowEdges w={w} h={h} d={d} color={glow} />
-      {!lite && score != null && <Sparkles count={8} scale={[w, h * 1.6, d]} size={3} speed={0.3 + score / 150} color={glow} />}
+      {!lite && score != null && <Motes count={8} scale={[w, h * 1.6, d]} size={0.18} speed={0.3 + score / 150} color={glow} />}
       {hover && (
         <Label position={[0, h / 2 + 0.8, 0]} center zIndexRange={[30, 0]}>
           <div className="tip">
@@ -167,7 +278,7 @@ function ExplodedBuilding({ b, detail, pulses, onRoom, lite }) {
           <group key={floor}>
             <mesh position={[0, y + 0.1, 0]} receiveShadow>
               <boxGeometry args={[w + 1, 0.2, d + 1]} />
-              <meshStandardMaterial color="#132036" metalness={0.4} roughness={0.5} transparent opacity={0.9} />
+              <meshStandardMaterial color="#0d1d36" metalness={0.4} roughness={0.5} transparent opacity={0.9} />
             </mesh>
             <group position={[0, y + 0.1, 0]}>
               <GlowEdges w={w + 1} h={0.2} d={d + 1} color={scoreColor(null).multiplyScalar(1.4)} />
@@ -226,7 +337,7 @@ function CameraDirector({ buildings, selected, detail }) {
       const cx = (minX + maxX) / 2;
       const cz = (minZ + maxZ) / 2;
       const span = Math.max(maxX - minX, maxZ - minZ, 40);
-      lookAt(controls, size, [cx, span * 0.75, cz + span * 1.05], [cx, 0, cz], true);
+      lookAt(controls, size, [cx, span * 0.95, cz + span * 1.2], [cx, 0, cz + span * 0.04], true);
     }
   }, [controls, size.width, size.height, layoutKey, selected, detail?.floors]); // eslint-disable-line react-hooks/exhaustive-deps
   return null;
@@ -235,23 +346,24 @@ function CameraDirector({ buildings, selected, detail }) {
 export function CampusWorld({ buildings, selected, detail, pulses, onSelect, onRoom, lite }) {
   return (
     <group>
-      <SceneLook background="#070b16" fog={CAMPUS_FOG} />
+      <SceneLook background="#040914" fog={CAMPUS_FOG} />
       <ambientLight intensity={0.5} />
-      <hemisphereLight args={['#7aa2ff', '#0b1020', 0.6]} />
+      <hemisphereLight args={['#8ec5ff', '#040914', 0.65]} />
       <directionalLight position={[60, 120, 40]} intensity={1.1} />
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.02, 0]} receiveShadow>
         <planeGeometry args={[1200, 1200]} />
-        <meshStandardMaterial color="#0a1222" />
+        <meshStandardMaterial color="#06101f" metalness={0.2} roughness={0.85} />
       </mesh>
+      <SitePlan lite={lite} />
       <Grid
         position={[0, -0.01, 0]}
         args={[600, 600]}
         cellSize={5}
         cellThickness={0.5}
-        cellColor="#0f1a31"
+        cellColor="#0e2442"
         sectionSize={25}
         sectionThickness={0.9}
-        sectionColor="#1a3260"
+        sectionColor="#1f6bb0"
         fadeDistance={420}
         fadeStrength={1.5}
         infiniteGrid

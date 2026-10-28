@@ -40,7 +40,7 @@ export function NetworkFilter() {
 
 export function ScoreBadge({ score, big = false }) {
   return (
-    <span className={big ? 'score big' : 'score'} style={{ background: scoreHex(score) }}>
+    <span className={big ? 'score big' : 'score'} style={{ '--c': scoreHex(score), '--s': score == null ? 0 : Math.min(100, Math.max(0, score)) }}>
       {score == null ? '–' : Math.round(score)}
     </span>
   );
@@ -69,7 +69,7 @@ export function Legend({ practice, inline = false }) {
 
 export function NetworkCard({ n }) {
   return (
-    <div className="net-card" style={{ borderLeftColor: scoreHex(n.score) }}>
+    <div className="net-card" style={{ '--c': scoreHex(n.score), '--s': n.score == null ? 0 : Math.min(100, Math.max(0, n.score)) }}>
       <div className="row">
         <b>{n.carrier}</b>
         <ScoreBadge score={n.score} />

@@ -14,10 +14,10 @@ export function Stage({ lite, children }) {
       dpr={lite ? [1, 1.5] : [1, 2]}
       camera={{ fov: 45, position: [0, 120, 160], near: 0.3, far: 2000 }}
       gl={{ antialias: lite, powerPreference: 'high-performance', toneMapping: lite ? ACESFilmicToneMapping : NoToneMapping }}
-      onCreated={({ gl }) => gl.setClearColor('#070b16')}
+      onCreated={({ gl }) => gl.setClearColor('#040914')}
     >
       {children}
-      <CameraControls makeDefault minDistance={3} maxDistance={450} maxPolarAngle={Math.PI / 2.1} smoothTime={0.6} dollySpeed={0.6} />
+      <CameraControls makeDefault minDistance={3} maxDistance={760} maxPolarAngle={Math.PI / 2.1} smoothTime={0.6} dollySpeed={0.6} />
       {!lite && (
         <EffectComposer multisampling={4}>
           <Bloom mipmapBlur luminanceThreshold={1} luminanceSmoothing={0.2} intensity={1.15} radius={0.75} />

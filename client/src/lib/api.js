@@ -1,13 +1,13 @@
 // Small helpers for talking to the Express API. Errors carry the server's message.
-export async function getJSON(url, { signal } = {}) {
-  const res = await fetch(url, { signal, headers: { Accept: 'application/json' } });
+export async function getJSON(url, { signal, headers } = {}) {
+  const res = await fetch(url, { signal, headers: { Accept: 'application/json', ...headers } });
   return handle(res);
 }
 
-export async function postJSON(url, body) {
+export async function postJSON(url, body, { method = 'POST', headers } = {}) {
   const res = await fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    method,
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json', ...headers },
     body: JSON.stringify(body),
   });
   return handle(res);

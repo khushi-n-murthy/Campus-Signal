@@ -11,6 +11,9 @@ import { speedtestRouter } from './routes/speedtest.js';
 import { measurementsRouter } from './routes/measurements.js'; // add in Phase 4
 import { campusRouter } from './routes/campus.js'; // add in Phase 5
 import { insightsRouter } from './routes/insights.js'; // add in Phase 5
+import { gameRouter } from './routes/game.js'; // GAME
+import { createGameService } from './game/service.js'; // GAME
+import { Player, Run, RexEvent, Measurement, Room } from './models.js'; // GAME
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 export const CLIENT_DIST = path.resolve(here, '../../client/dist');
@@ -23,18 +26,21 @@ export function createApp({ config, lookup }) {
   });
   const campusList = config.campusCidrs.length ? buildCampusList(config.campusCidrs) : null;
 
+  const game = createGameService({ models: { Player, Run, RexEvent, Measurement, Room }, config }); // GAME
+
   const trust = config.trustProxy;
   app.set('trust proxy', /^\d+$/.test(trust) ? Number(trust) : trust === 'true' ? true : trust);
   app.disable('x-powered-by');
 
   app.get('/api/health', (req, res) => {
-    res.json({ ok: true, db: dbIsUp(), asnDatabase: Boolean(lookup), practiceData: config.includeDemo });
+    res.json({ ok: true, db: dbIsUp(), asnDatabase: lookup ? (lookup.ready ?? true) : false, practiceData: config.includeDemo });
   });
 
   // Speed-test routes come before express.json so uploads are never parsed as JSON.
   app.use('/api', speedtestRouter({ lookup, campusList }));
   app.use(express.json({ limit: '64kb' }));
-  app.use('/api', measurementsRouter({ config, lookup, campusList, io })); // add in Phase 4
+  app.use('/api', measurementsRouter({ config, lookup, campusList, io, game })); // add in Phase 4
+  app.use('/api', gameRouter({ config, lookup, campusList, io, game })); // GAME
   app.use('/api', campusRouter(config)); // add in Phase 5
   app.use('/api', insightsRouter(config)); // add in Phase 5
 

@@ -2,15 +2,17 @@
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
 import { io } from 'socket.io-client';
 
-const LiveContext = createContext({ last: null, connected: false });
+const LiveContext = createContext({ last: null, connected: false, feed: [] });
 
 export function LiveProvider({ children }) {
-  const [state, setState] = useState({ last: null, connected: false });
+  const [state, setState] = useState({ last: null, connected: false, feed: [] });
   useEffect(() => {
     const socket = io({ reconnectionDelayMax: 10000 });
     socket.on('connect', () => setState((s) => ({ ...s, connected: true })));
     socket.on('disconnect', () => setState((s) => ({ ...s, connected: false })));
     socket.on('measurement:new', (event) => setState((s) => ({ ...s, last: { ...event, receivedAt: Date.now() } })));
+    // GAME: scans and Rex runs by other players, for the live ticker
+    socket.on('game:event', (event) => setState((s) => ({ ...s, feed: [{ ...event, id: `${Date.now()}-${Math.random()}`, receivedAt: Date.now() }, ...s.feed].slice(0, 5) })));
     return () => socket.close();
   }, []);
   return <LiveContext.Provider value={state}>{children}</LiveContext.Provider>;

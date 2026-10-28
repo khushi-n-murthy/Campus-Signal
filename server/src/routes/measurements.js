@@ -10,7 +10,7 @@ export function hashDevice(device, salt) {
   return crypto.createHash('sha256').update(`${salt}:${device}`).digest('hex').slice(0, 32);
 }
 
-export function measurementsRouter({ config, lookup, campusList, io }) {
+export function measurementsRouter({ config, lookup, campusList, io, game }) {
   const r = Router();
 
   r.post('/measurements', async (req, res) => {
@@ -34,6 +34,8 @@ export function measurementsRouter({ config, lookup, campusList, io }) {
     const net = classifyIp(req.ip, lookup, campusList);
     const now = new Date();
     const { hour, dow } = istParts(now);
+    // GAME: what this room looked like before this scan (first scan? new network? stale?)
+    const history = game ? await game.roomHistory(room._id).catch(() => null) : null;
     const doc = await Measurement.create({
       roomId: room._id,
       buildingId: room.buildingId,
@@ -62,7 +64,21 @@ export function measurementsRouter({ config, lookup, campusList, io }) {
       at: doc.createdAt,
     };
     io?.emit('measurement:new', event);
-    res.status(201).json({ ...event, id: doc._id, downMbps: doc.downMbps, upMbps: doc.upMbps, latencyMs: doc.latencyMs, jitterMs: doc.jitterMs, lossPct: doc.lossPct });
+
+    // GAME: XP, streaks, quests, badges. A game problem must never lose the saved test.
+    let reward = null;
+    if (game && history) {
+      try {
+        const out = await game.rewardScan({ device: value.device, roomId: room._id, carrier: net.carrier, score: doc.score, history, now });
+        if (out) {
+          reward = out.reward;
+          io?.emit('game:event', { type: 'scan', nickname: out.player.nickname, team: out.player.team, roomId: room._id, roomName: room.name, xp: reward.xp, score: doc.score, rex: reward.rex, first: reward.firstInRoom, at: now });
+        }
+      } catch (err) {
+        console.error('game reward failed', err);
+      }
+    }
+    res.status(201).json({ ...event, id: doc._id, downMbps: doc.downMbps, upMbps: doc.upMbps, latencyMs: doc.latencyMs, jitterMs: doc.jitterMs, lossPct: doc.lossPct, reward });
   });
 
   return r;

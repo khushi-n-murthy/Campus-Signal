@@ -16,6 +16,7 @@ export function parseView(pathname) {
   if (parts[0] === 'r' && parts[1]) return { kind: 'room', id: parts[1].toUpperCase() };
   if (parts[0] === 't' && parts[1]) return { kind: 'test', id: parts[1].toUpperCase() };
   if (parts[0] === 'test') return { kind: 'pick' };
+  if (parts[0] === 'play') return { kind: 'play' }; // GAME
   if (parts[0] === 'advisor') return { kind: 'advisor' };
   if (parts[0] === 'admin') return { kind: 'admin' };
   return { kind: 'notfound' };

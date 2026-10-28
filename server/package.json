@@ -20,7 +20,9 @@
     "verify:7": "node verify/phase7-qr.js",
     "verify:8": "node verify/phase8-client.js",
     "verify:9": "node verify/phase9-deploy.js",
-    "verify": "node verify/all.js"
+    "verify": "node verify/all.js",
+    "verify:10": "node verify/phase10-game.js",
+    "verify:game": "node verify/phase10-game.js --no-db"
   },
   "type": "module",
   "dependencies": {

@@ -1,5 +1,8 @@
 // A pixel-framed dialog. Escape closes it, Tab stays inside, focus returns afterwards.
+// Rendered into <body> through a portal: the site's glass panels use backdrop-filter/clip-path, which
+// would otherwise trap a position:fixed dialog opened from inside a panel (e.g. Rex's Lair in a room box).
 import { useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 
 export default function PxModal({ title, onClose, children, wide = false, tone = '' }) {
   const box = useRef(null);
@@ -19,11 +22,12 @@ export default function PxModal({ title, onClose, children, wide = false, tone =
     document.addEventListener('keydown', onKey);
     return () => { document.removeEventListener('keydown', onKey); prev?.focus?.({ preventScroll: true }); };
   }, [onClose]);
-  return (
+  return createPortal(
     <div className="gm-scrim" onPointerDown={(e) => { if (e.target === e.currentTarget && onClose) onClose(); }}>
       <div className={`gm-dialog px-box ${wide ? 'wide' : ''} ${tone}`} role="dialog" aria-modal="true" aria-label={title} ref={box}>
         {children}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

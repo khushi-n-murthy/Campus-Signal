@@ -1,440 +1,4950 @@
 {
-  "note": "Placeholder layout. Replace names, sizes and positions with your real campus (see guide, Phase 1).",
+  "note": "Traced from the official campus map (0.3 m per map pixel). 3 floors x 5 rooms per building. Edit names/sizes here, then npm run seed:campus -- --prune.",
   "buildings": [
     {
-      "_id": "A",
-      "name": "Block A",
-      "floors": 4,
+      "_id": "DTH",
+      "name": "Design Thinking Huddle",
+      "floors": 3,
       "footprint": {
-        "x": -45,
-        "z": -10,
-        "w": 64,
-        "d": 20
+        "x": -90.3,
+        "z": -85.95,
+        "w": 26.9,
+        "d": 20.0
       }
     },
     {
-      "_id": "B",
-      "name": "Block B",
+      "_id": "MECH",
+      "name": "Mechanical Dept",
       "floors": 3,
       "footprint": {
-        "x": 35,
-        "z": -25,
-        "w": 48,
-        "d": 18
+        "x": -90.3,
+        "z": -61.95,
+        "w": 26.9,
+        "d": 27.8
+      }
+    },
+    {
+      "_id": "BIO",
+      "name": "Biotech Quadrangle",
+      "floors": 3,
+      "footprint": {
+        "x": -90.3,
+        "z": -16.95,
+        "w": 26.9,
+        "d": 38.0
+      }
+    },
+    {
+      "_id": "GH",
+      "name": "Green House",
+      "floors": 3,
+      "footprint": {
+        "x": -90.3,
+        "z": 10.35,
+        "w": 26.9,
+        "d": 13.4
+      }
+    },
+    {
+      "_id": "ADMIN",
+      "name": "Admin Block",
+      "floors": 3,
+      "footprint": {
+        "x": -35.4,
+        "z": -64.65,
+        "w": 53.3,
+        "d": 31.4
+      }
+    },
+    {
+      "_id": "IEM",
+      "name": "IEM Auditorium",
+      "floors": 3,
+      "footprint": {
+        "x": -52.65,
+        "z": -30.0,
+        "w": 18.8,
+        "d": 11.9
+      }
+    },
+    {
+      "_id": "KRIYA",
+      "name": "Kriyakalpa",
+      "floors": 3,
+      "footprint": {
+        "x": -14.25,
+        "z": -30.0,
+        "w": 24.8,
+        "d": 11.9
+      }
+    },
+    {
+      "_id": "RVU",
+      "name": "RV University",
+      "floors": 3,
+      "footprint": {
+        "x": -34.8,
+        "z": -8.4,
+        "w": 17.9,
+        "d": 23.9
+      }
+    },
+    {
+      "_id": "TAC",
+      "name": "Thoda Aur Canteen",
+      "floors": 3,
+      "footprint": {
+        "x": -21.3,
+        "z": -4.2,
+        "w": 8.9,
+        "d": 15.5
+      }
+    },
+    {
+      "_id": "BANK",
+      "name": "Kotak Mahindra Bank",
+      "floors": 3,
+      "footprint": {
+        "x": 34.05,
+        "z": -81.3,
+        "w": 18.2,
+        "d": 17.3
+      }
+    },
+    {
+      "_id": "CIVIL",
+      "name": "Civil Dept",
+      "floors": 3,
+      "footprint": {
+        "x": 27.0,
+        "z": -60.3,
+        "w": 32.3,
+        "d": 24.5
+      }
+    },
+    {
+      "_id": "EEE",
+      "name": "EEE Dept",
+      "floors": 3,
+      "footprint": {
+        "x": 27.0,
+        "z": -24.3,
+        "w": 32.3,
+        "d": 23.3
+      }
+    },
+    {
+      "_id": "ECE",
+      "name": "ECE Dept",
+      "floors": 3,
+      "footprint": {
+        "x": 13.2,
+        "z": -4.5,
+        "w": 59.9,
+        "d": 16.1
+      }
+    },
+    {
+      "_id": "PE",
+      "name": "PE & Sports Dept",
+      "floors": 3,
+      "footprint": {
+        "x": 84.6,
+        "z": -34.8,
+        "w": 38.3,
+        "d": 9.5
+      }
+    },
+    {
+      "_id": "CSE",
+      "name": "CSE Dept",
+      "floors": 3,
+      "footprint": {
+        "x": 78.3,
+        "z": -19.05,
+        "w": 50.9,
+        "d": 11.0
+      }
+    },
+    {
+      "_id": "HC",
+      "name": "Health Centre",
+      "floors": 3,
+      "footprint": {
+        "x": 78.3,
+        "z": -9.0,
+        "w": 50.9,
+        "d": 8.9
+      }
+    },
+    {
+      "_id": "KH",
+      "name": "Krishna Hostel",
+      "floors": 3,
+      "footprint": {
+        "x": 78.3,
+        "z": 12.75,
+        "w": 50.9,
+        "d": 13.4
+      }
+    },
+    {
+      "_id": "CBH",
+      "name": "Cauvery Boys Hostel",
+      "floors": 3,
+      "footprint": {
+        "x": 87.3,
+        "z": 49.2,
+        "w": 32.9,
+        "d": 29.3
+      }
+    },
+    {
+      "_id": "MATH",
+      "name": "Mathematics Dept",
+      "floors": 3,
+      "footprint": {
+        "x": 87.3,
+        "z": 78.15,
+        "w": 32.9,
+        "d": 19.4
+      }
+    },
+    {
+      "_id": "CHEM",
+      "name": "Chem Engg & Physics Dept",
+      "floors": 3,
+      "footprint": {
+        "x": -28.8,
+        "z": 25.2,
+        "w": 23.9,
+        "d": 23.3
+      }
+    },
+    {
+      "_id": "TELE",
+      "name": "Telecommunication Dept",
+      "floors": 3,
+      "footprint": {
+        "x": 11.7,
+        "z": 21.3,
+        "w": 32.9,
+        "d": 15.5
+      }
+    },
+    {
+      "_id": "MING",
+      "name": "Mingos Canteen",
+      "floors": 3,
+      "footprint": {
+        "x": 35.7,
+        "z": 21.3,
+        "w": 14.9,
+        "d": 15.5
       }
     },
     {
       "_id": "LIB",
       "name": "Library",
-      "floors": 2,
+      "floors": 3,
       "footprint": {
-        "x": 25,
-        "z": 30,
-        "w": 40,
-        "d": 24
+        "x": -12.75,
+        "z": 53.7,
+        "w": 56.0,
+        "d": 18.5
       }
     },
     {
-      "_id": "CAN",
-      "name": "Canteen",
-      "floors": 1,
+      "_id": "ISE",
+      "name": "ISE & Aerospace Dept",
+      "floors": 3,
       "footprint": {
-        "x": -35,
-        "z": 35,
-        "w": 28,
-        "d": 16
+        "x": -12.75,
+        "z": 75.45,
+        "w": 56.0,
+        "d": 24.8
       }
     }
   ],
   "rooms": [
     {
-      "_id": "A-001",
-      "buildingId": "A",
+      "_id": "DTH-001",
+      "buildingId": "DTH",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 8.957,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-002",
+      "buildingId": "DTH",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 8.967,
+        "y": 0.0,
+        "w": 8.957,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-003",
+      "buildingId": "DTH",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 17.933,
+        "y": 0.0,
+        "w": 8.957,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-004",
+      "buildingId": "DTH",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 11.5,
+        "w": 13.44,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-005",
+      "buildingId": "DTH",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 13.45,
+        "y": 11.5,
+        "w": 13.44,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-101",
+      "buildingId": "DTH",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 8.957,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-102",
+      "buildingId": "DTH",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 8.967,
+        "y": 0.0,
+        "w": 8.957,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-103",
+      "buildingId": "DTH",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 17.933,
+        "y": 0.0,
+        "w": 8.957,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-104",
+      "buildingId": "DTH",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 11.5,
+        "w": 13.44,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-105",
+      "buildingId": "DTH",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 13.45,
+        "y": 11.5,
+        "w": 13.44,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-201",
+      "buildingId": "DTH",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 8.957,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-202",
+      "buildingId": "DTH",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 8.967,
+        "y": 0.0,
+        "w": 8.957,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-203",
+      "buildingId": "DTH",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 17.933,
+        "y": 0.0,
+        "w": 8.957,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-204",
+      "buildingId": "DTH",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 11.5,
+        "w": 13.44,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "DTH-205",
+      "buildingId": "DTH",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 13.45,
+        "y": 11.5,
+        "w": 13.44,
+        "h": 8.49
+      }
+    },
+    {
+      "_id": "MECH-001",
+      "buildingId": "MECH",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 11.94,
+        "h": 9.257
+      }
+    },
+    {
+      "_id": "MECH-002",
+      "buildingId": "MECH",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 9.267,
+        "w": 11.94,
+        "h": 9.257
+      }
+    },
+    {
+      "_id": "MECH-003",
+      "buildingId": "MECH",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 18.533,
+        "w": 11.94,
+        "h": 9.257
+      }
+    },
+    {
+      "_id": "MECH-004",
+      "buildingId": "MECH",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.95,
+        "y": 0.0,
+        "w": 11.94,
+        "h": 13.89
+      }
+    },
+    {
+      "_id": "MECH-005",
+      "buildingId": "MECH",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.95,
+        "y": 13.9,
+        "w": 11.94,
+        "h": 13.89
+      }
+    },
+    {
+      "_id": "MECH-101",
+      "buildingId": "MECH",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 11.94,
+        "h": 9.257
+      }
+    },
+    {
+      "_id": "MECH-102",
+      "buildingId": "MECH",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 9.267,
+        "w": 11.94,
+        "h": 9.257
+      }
+    },
+    {
+      "_id": "MECH-103",
+      "buildingId": "MECH",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 18.533,
+        "w": 11.94,
+        "h": 9.257
+      }
+    },
+    {
+      "_id": "MECH-104",
+      "buildingId": "MECH",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.95,
+        "y": 0.0,
+        "w": 11.94,
+        "h": 13.89
+      }
+    },
+    {
+      "_id": "MECH-105",
+      "buildingId": "MECH",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.95,
+        "y": 13.9,
+        "w": 11.94,
+        "h": 13.89
+      }
+    },
+    {
+      "_id": "MECH-201",
+      "buildingId": "MECH",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 11.94,
+        "h": 9.257
+      }
+    },
+    {
+      "_id": "MECH-202",
+      "buildingId": "MECH",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 9.267,
+        "w": 11.94,
+        "h": 9.257
+      }
+    },
+    {
+      "_id": "MECH-203",
+      "buildingId": "MECH",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 18.533,
+        "w": 11.94,
+        "h": 9.257
+      }
+    },
+    {
+      "_id": "MECH-204",
+      "buildingId": "MECH",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.95,
+        "y": 0.0,
+        "w": 11.94,
+        "h": 13.89
+      }
+    },
+    {
+      "_id": "MECH-205",
+      "buildingId": "MECH",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.95,
+        "y": 13.9,
+        "w": 11.94,
+        "h": 13.89
+      }
+    },
+    {
+      "_id": "BIO-001",
+      "buildingId": "BIO",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 11.94,
+        "h": 12.657
+      }
+    },
+    {
+      "_id": "BIO-002",
+      "buildingId": "BIO",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 12.667,
+        "w": 11.94,
+        "h": 12.657
+      }
+    },
+    {
+      "_id": "BIO-003",
+      "buildingId": "BIO",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 25.333,
+        "w": 11.94,
+        "h": 12.657
+      }
+    },
+    {
+      "_id": "BIO-004",
+      "buildingId": "BIO",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.95,
+        "y": 0.0,
+        "w": 11.94,
+        "h": 18.99
+      }
+    },
+    {
+      "_id": "BIO-005",
+      "buildingId": "BIO",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.95,
+        "y": 19.0,
+        "w": 11.94,
+        "h": 18.99
+      }
+    },
+    {
+      "_id": "BIO-101",
+      "buildingId": "BIO",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 11.94,
+        "h": 12.657
+      }
+    },
+    {
+      "_id": "BIO-102",
+      "buildingId": "BIO",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 12.667,
+        "w": 11.94,
+        "h": 12.657
+      }
+    },
+    {
+      "_id": "BIO-103",
+      "buildingId": "BIO",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 25.333,
+        "w": 11.94,
+        "h": 12.657
+      }
+    },
+    {
+      "_id": "BIO-104",
+      "buildingId": "BIO",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.95,
+        "y": 0.0,
+        "w": 11.94,
+        "h": 18.99
+      }
+    },
+    {
+      "_id": "BIO-105",
+      "buildingId": "BIO",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.95,
+        "y": 19.0,
+        "w": 11.94,
+        "h": 18.99
+      }
+    },
+    {
+      "_id": "BIO-201",
+      "buildingId": "BIO",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 11.94,
+        "h": 12.657
+      }
+    },
+    {
+      "_id": "BIO-202",
+      "buildingId": "BIO",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 12.667,
+        "w": 11.94,
+        "h": 12.657
+      }
+    },
+    {
+      "_id": "BIO-203",
+      "buildingId": "BIO",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 25.333,
+        "w": 11.94,
+        "h": 12.657
+      }
+    },
+    {
+      "_id": "BIO-204",
+      "buildingId": "BIO",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.95,
+        "y": 0.0,
+        "w": 11.94,
+        "h": 18.99
+      }
+    },
+    {
+      "_id": "BIO-205",
+      "buildingId": "BIO",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.95,
+        "y": 19.0,
+        "w": 11.94,
+        "h": 18.99
+      }
+    },
+    {
+      "_id": "GH-001",
+      "buildingId": "GH",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-002",
+      "buildingId": "GH",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 5.38,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-003",
+      "buildingId": "GH",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.76,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-004",
+      "buildingId": "GH",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.14,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-005",
+      "buildingId": "GH",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.52,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-101",
+      "buildingId": "GH",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-102",
+      "buildingId": "GH",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 5.38,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-103",
+      "buildingId": "GH",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.76,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-104",
+      "buildingId": "GH",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.14,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-105",
+      "buildingId": "GH",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.52,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-201",
+      "buildingId": "GH",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-202",
+      "buildingId": "GH",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 5.38,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-203",
+      "buildingId": "GH",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.76,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-204",
+      "buildingId": "GH",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.14,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "GH-205",
+      "buildingId": "GH",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.52,
+        "y": 0,
+        "w": 5.37,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "ADMIN-001",
+      "buildingId": "ADMIN",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 17.757,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-002",
+      "buildingId": "ADMIN",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 17.767,
+        "y": 0.0,
+        "w": 17.757,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-003",
+      "buildingId": "ADMIN",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 35.533,
+        "y": 0.0,
+        "w": 17.757,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-004",
+      "buildingId": "ADMIN",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 17.2,
+        "w": 26.64,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-005",
+      "buildingId": "ADMIN",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 26.65,
+        "y": 17.2,
+        "w": 26.64,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-101",
+      "buildingId": "ADMIN",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 17.757,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-102",
+      "buildingId": "ADMIN",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 17.767,
+        "y": 0.0,
+        "w": 17.757,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-103",
+      "buildingId": "ADMIN",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 35.533,
+        "y": 0.0,
+        "w": 17.757,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-104",
+      "buildingId": "ADMIN",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 17.2,
+        "w": 26.64,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-105",
+      "buildingId": "ADMIN",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 26.65,
+        "y": 17.2,
+        "w": 26.64,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-201",
+      "buildingId": "ADMIN",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 17.757,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-202",
+      "buildingId": "ADMIN",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 17.767,
+        "y": 0.0,
+        "w": 17.757,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-203",
+      "buildingId": "ADMIN",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 35.533,
+        "y": 0.0,
+        "w": 17.757,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-204",
+      "buildingId": "ADMIN",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 17.2,
+        "w": 26.64,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "ADMIN-205",
+      "buildingId": "ADMIN",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 26.65,
+        "y": 17.2,
+        "w": 26.64,
+        "h": 14.19
+      }
+    },
+    {
+      "_id": "IEM-001",
+      "buildingId": "IEM",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-002",
+      "buildingId": "IEM",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 3.76,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-003",
+      "buildingId": "IEM",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 7.52,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-004",
+      "buildingId": "IEM",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 11.28,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-005",
+      "buildingId": "IEM",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 15.04,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-101",
+      "buildingId": "IEM",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-102",
+      "buildingId": "IEM",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 3.76,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-103",
+      "buildingId": "IEM",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 7.52,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-104",
+      "buildingId": "IEM",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 11.28,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-105",
+      "buildingId": "IEM",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 15.04,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-201",
+      "buildingId": "IEM",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-202",
+      "buildingId": "IEM",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 3.76,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-203",
+      "buildingId": "IEM",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 7.52,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-204",
+      "buildingId": "IEM",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 11.28,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "IEM-205",
+      "buildingId": "IEM",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 15.04,
+        "y": 0,
+        "w": 3.75,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-001",
+      "buildingId": "KRIYA",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-002",
+      "buildingId": "KRIYA",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 4.96,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-003",
+      "buildingId": "KRIYA",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 9.92,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-004",
+      "buildingId": "KRIYA",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.88,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-005",
+      "buildingId": "KRIYA",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 19.84,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-101",
+      "buildingId": "KRIYA",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-102",
+      "buildingId": "KRIYA",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 4.96,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-103",
+      "buildingId": "KRIYA",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 9.92,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-104",
+      "buildingId": "KRIYA",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.88,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-105",
+      "buildingId": "KRIYA",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 19.84,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-201",
+      "buildingId": "KRIYA",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-202",
+      "buildingId": "KRIYA",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 4.96,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-203",
+      "buildingId": "KRIYA",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 9.92,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-204",
+      "buildingId": "KRIYA",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.88,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "KRIYA-205",
+      "buildingId": "KRIYA",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 19.84,
+        "y": 0,
+        "w": 4.95,
+        "h": 11.89
+      }
+    },
+    {
+      "_id": "RVU-001",
+      "buildingId": "RVU",
       "floor": 0,
       "name": "Room 001",
       "kind": "classroom",
       "shape": {
         "x": 0,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "y": 0.0,
+        "w": 17.89,
+        "h": 4.77
       }
     },
     {
-      "_id": "A-002",
-      "buildingId": "A",
+      "_id": "RVU-002",
+      "buildingId": "RVU",
       "floor": 0,
       "name": "Room 002",
       "kind": "classroom",
       "shape": {
-        "x": 16,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "x": 0,
+        "y": 4.78,
+        "w": 17.89,
+        "h": 4.77
       }
     },
     {
-      "_id": "A-003",
-      "buildingId": "A",
+      "_id": "RVU-003",
+      "buildingId": "RVU",
       "floor": 0,
       "name": "Room 003",
       "kind": "classroom",
       "shape": {
-        "x": 32,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "x": 0,
+        "y": 9.56,
+        "w": 17.89,
+        "h": 4.77
       }
     },
     {
-      "_id": "A-004",
-      "buildingId": "A",
+      "_id": "RVU-004",
+      "buildingId": "RVU",
       "floor": 0,
-      "name": "Lab 004",
-      "kind": "lab",
+      "name": "Room 004",
+      "kind": "classroom",
       "shape": {
-        "x": 48,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "x": 0,
+        "y": 14.34,
+        "w": 17.89,
+        "h": 4.77
       }
     },
     {
-      "_id": "A-101",
-      "buildingId": "A",
+      "_id": "RVU-005",
+      "buildingId": "RVU",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 0,
+        "y": 19.12,
+        "w": 17.89,
+        "h": 4.77
+      }
+    },
+    {
+      "_id": "RVU-101",
+      "buildingId": "RVU",
       "floor": 1,
       "name": "Room 101",
       "kind": "classroom",
       "shape": {
         "x": 0,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "y": 0.0,
+        "w": 17.89,
+        "h": 4.77
       }
     },
     {
-      "_id": "A-102",
-      "buildingId": "A",
+      "_id": "RVU-102",
+      "buildingId": "RVU",
       "floor": 1,
       "name": "Room 102",
       "kind": "classroom",
       "shape": {
-        "x": 16,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "x": 0,
+        "y": 4.78,
+        "w": 17.89,
+        "h": 4.77
       }
     },
     {
-      "_id": "A-103",
-      "buildingId": "A",
+      "_id": "RVU-103",
+      "buildingId": "RVU",
       "floor": 1,
       "name": "Room 103",
       "kind": "classroom",
       "shape": {
-        "x": 32,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "x": 0,
+        "y": 9.56,
+        "w": 17.89,
+        "h": 4.77
       }
     },
     {
-      "_id": "A-104",
-      "buildingId": "A",
+      "_id": "RVU-104",
+      "buildingId": "RVU",
       "floor": 1,
-      "name": "Lab 104",
-      "kind": "lab",
+      "name": "Room 104",
+      "kind": "classroom",
       "shape": {
-        "x": 48,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "x": 0,
+        "y": 14.34,
+        "w": 17.89,
+        "h": 4.77
       }
     },
     {
-      "_id": "A-201",
-      "buildingId": "A",
+      "_id": "RVU-105",
+      "buildingId": "RVU",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 0,
+        "y": 19.12,
+        "w": 17.89,
+        "h": 4.77
+      }
+    },
+    {
+      "_id": "RVU-201",
+      "buildingId": "RVU",
       "floor": 2,
       "name": "Room 201",
       "kind": "classroom",
       "shape": {
         "x": 0,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "y": 0.0,
+        "w": 17.89,
+        "h": 4.77
       }
     },
     {
-      "_id": "A-202",
-      "buildingId": "A",
+      "_id": "RVU-202",
+      "buildingId": "RVU",
       "floor": 2,
       "name": "Room 202",
       "kind": "classroom",
       "shape": {
-        "x": 16,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "x": 0,
+        "y": 4.78,
+        "w": 17.89,
+        "h": 4.77
       }
     },
     {
-      "_id": "A-203",
-      "buildingId": "A",
+      "_id": "RVU-203",
+      "buildingId": "RVU",
       "floor": 2,
       "name": "Room 203",
       "kind": "classroom",
       "shape": {
-        "x": 32,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "x": 0,
+        "y": 9.56,
+        "w": 17.89,
+        "h": 4.77
       }
     },
     {
-      "_id": "A-204",
-      "buildingId": "A",
+      "_id": "RVU-204",
+      "buildingId": "RVU",
       "floor": 2,
-      "name": "Lab 204",
-      "kind": "lab",
-      "shape": {
-        "x": 48,
-        "y": 0,
-        "w": 16,
-        "h": 16
-      }
-    },
-    {
-      "_id": "A-301",
-      "buildingId": "A",
-      "floor": 3,
-      "name": "Room 301",
+      "name": "Room 204",
       "kind": "classroom",
       "shape": {
         "x": 0,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "y": 14.34,
+        "w": 17.89,
+        "h": 4.77
       }
     },
     {
-      "_id": "A-302",
-      "buildingId": "A",
-      "floor": 3,
-      "name": "Room 302",
+      "_id": "RVU-205",
+      "buildingId": "RVU",
+      "floor": 2,
+      "name": "Room 205",
       "kind": "classroom",
       "shape": {
-        "x": 16,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "x": 0,
+        "y": 19.12,
+        "w": 17.89,
+        "h": 4.77
       }
     },
     {
-      "_id": "A-303",
-      "buildingId": "A",
-      "floor": 3,
-      "name": "Room 303",
-      "kind": "classroom",
+      "_id": "TAC-001",
+      "buildingId": "TAC",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "canteen",
       "shape": {
-        "x": 32,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "x": 0,
+        "y": 0.0,
+        "w": 8.89,
+        "h": 3.09
       }
     },
     {
-      "_id": "A-304",
-      "buildingId": "A",
-      "floor": 3,
-      "name": "Lab 304",
-      "kind": "lab",
+      "_id": "TAC-002",
+      "buildingId": "TAC",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "canteen",
       "shape": {
-        "x": 48,
-        "y": 0,
-        "w": 16,
-        "h": 16
+        "x": 0,
+        "y": 3.1,
+        "w": 8.89,
+        "h": 3.09
       }
     },
     {
-      "_id": "B-001",
-      "buildingId": "B",
+      "_id": "TAC-003",
+      "buildingId": "TAC",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 6.2,
+        "w": 8.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "TAC-004",
+      "buildingId": "TAC",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 9.3,
+        "w": 8.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "TAC-005",
+      "buildingId": "TAC",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 12.4,
+        "w": 8.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "TAC-101",
+      "buildingId": "TAC",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 0.0,
+        "w": 8.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "TAC-102",
+      "buildingId": "TAC",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 3.1,
+        "w": 8.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "TAC-103",
+      "buildingId": "TAC",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 6.2,
+        "w": 8.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "TAC-104",
+      "buildingId": "TAC",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 9.3,
+        "w": 8.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "TAC-105",
+      "buildingId": "TAC",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 12.4,
+        "w": 8.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "TAC-201",
+      "buildingId": "TAC",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 0.0,
+        "w": 8.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "TAC-202",
+      "buildingId": "TAC",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 3.1,
+        "w": 8.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "TAC-203",
+      "buildingId": "TAC",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 6.2,
+        "w": 8.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "TAC-204",
+      "buildingId": "TAC",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 9.3,
+        "w": 8.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "TAC-205",
+      "buildingId": "TAC",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 12.4,
+        "w": 8.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "BANK-001",
+      "buildingId": "BANK",
       "floor": 0,
       "name": "Room 001",
       "kind": "classroom",
       "shape": {
-        "x": 0,
+        "x": 0.0,
         "y": 0,
-        "w": 16,
-        "h": 14
+        "w": 3.63,
+        "h": 17.29
       }
     },
     {
-      "_id": "B-002",
-      "buildingId": "B",
+      "_id": "BANK-002",
+      "buildingId": "BANK",
       "floor": 0,
       "name": "Room 002",
       "kind": "classroom",
       "shape": {
-        "x": 16,
+        "x": 3.64,
         "y": 0,
-        "w": 16,
-        "h": 14
+        "w": 3.63,
+        "h": 17.29
       }
     },
     {
-      "_id": "B-003",
-      "buildingId": "B",
+      "_id": "BANK-003",
+      "buildingId": "BANK",
       "floor": 0,
       "name": "Room 003",
       "kind": "classroom",
       "shape": {
-        "x": 32,
+        "x": 7.28,
         "y": 0,
-        "w": 16,
-        "h": 14
+        "w": 3.63,
+        "h": 17.29
       }
     },
     {
-      "_id": "B-101",
-      "buildingId": "B",
+      "_id": "BANK-004",
+      "buildingId": "BANK",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.92,
+        "y": 0,
+        "w": 3.63,
+        "h": 17.29
+      }
+    },
+    {
+      "_id": "BANK-005",
+      "buildingId": "BANK",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.56,
+        "y": 0,
+        "w": 3.63,
+        "h": 17.29
+      }
+    },
+    {
+      "_id": "BANK-101",
+      "buildingId": "BANK",
       "floor": 1,
       "name": "Room 101",
       "kind": "classroom",
       "shape": {
-        "x": 0,
+        "x": 0.0,
         "y": 0,
-        "w": 16,
-        "h": 14
+        "w": 3.63,
+        "h": 17.29
       }
     },
     {
-      "_id": "B-102",
-      "buildingId": "B",
+      "_id": "BANK-102",
+      "buildingId": "BANK",
       "floor": 1,
       "name": "Room 102",
       "kind": "classroom",
       "shape": {
-        "x": 16,
+        "x": 3.64,
         "y": 0,
-        "w": 16,
-        "h": 14
+        "w": 3.63,
+        "h": 17.29
       }
     },
     {
-      "_id": "B-103",
-      "buildingId": "B",
+      "_id": "BANK-103",
+      "buildingId": "BANK",
       "floor": 1,
       "name": "Room 103",
       "kind": "classroom",
       "shape": {
-        "x": 32,
+        "x": 7.28,
         "y": 0,
-        "w": 16,
-        "h": 14
+        "w": 3.63,
+        "h": 17.29
       }
     },
     {
-      "_id": "B-201",
-      "buildingId": "B",
+      "_id": "BANK-104",
+      "buildingId": "BANK",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.92,
+        "y": 0,
+        "w": 3.63,
+        "h": 17.29
+      }
+    },
+    {
+      "_id": "BANK-105",
+      "buildingId": "BANK",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.56,
+        "y": 0,
+        "w": 3.63,
+        "h": 17.29
+      }
+    },
+    {
+      "_id": "BANK-201",
+      "buildingId": "BANK",
       "floor": 2,
       "name": "Room 201",
       "kind": "classroom",
       "shape": {
-        "x": 0,
+        "x": 0.0,
         "y": 0,
-        "w": 16,
-        "h": 14
+        "w": 3.63,
+        "h": 17.29
       }
     },
     {
-      "_id": "B-202",
-      "buildingId": "B",
+      "_id": "BANK-202",
+      "buildingId": "BANK",
       "floor": 2,
       "name": "Room 202",
       "kind": "classroom",
       "shape": {
-        "x": 16,
+        "x": 3.64,
         "y": 0,
-        "w": 16,
-        "h": 14
+        "w": 3.63,
+        "h": 17.29
       }
     },
     {
-      "_id": "B-203",
-      "buildingId": "B",
+      "_id": "BANK-203",
+      "buildingId": "BANK",
       "floor": 2,
       "name": "Room 203",
       "kind": "classroom",
       "shape": {
-        "x": 32,
+        "x": 7.28,
         "y": 0,
-        "w": 16,
-        "h": 14
+        "w": 3.63,
+        "h": 17.29
+      }
+    },
+    {
+      "_id": "BANK-204",
+      "buildingId": "BANK",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.92,
+        "y": 0,
+        "w": 3.63,
+        "h": 17.29
+      }
+    },
+    {
+      "_id": "BANK-205",
+      "buildingId": "BANK",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.56,
+        "y": 0,
+        "w": 3.63,
+        "h": 17.29
+      }
+    },
+    {
+      "_id": "CIVIL-001",
+      "buildingId": "CIVIL",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-002",
+      "buildingId": "CIVIL",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.767,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-003",
+      "buildingId": "CIVIL",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.533,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-004",
+      "buildingId": "CIVIL",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 13.75,
+        "w": 16.14,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-005",
+      "buildingId": "CIVIL",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.15,
+        "y": 13.75,
+        "w": 16.14,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-101",
+      "buildingId": "CIVIL",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-102",
+      "buildingId": "CIVIL",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.767,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-103",
+      "buildingId": "CIVIL",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.533,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-104",
+      "buildingId": "CIVIL",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 13.75,
+        "w": 16.14,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-105",
+      "buildingId": "CIVIL",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.15,
+        "y": 13.75,
+        "w": 16.14,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-201",
+      "buildingId": "CIVIL",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-202",
+      "buildingId": "CIVIL",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.767,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-203",
+      "buildingId": "CIVIL",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.533,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-204",
+      "buildingId": "CIVIL",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 13.75,
+        "w": 16.14,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "CIVIL-205",
+      "buildingId": "CIVIL",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.15,
+        "y": 13.75,
+        "w": 16.14,
+        "h": 10.74
+      }
+    },
+    {
+      "_id": "EEE-001",
+      "buildingId": "EEE",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-002",
+      "buildingId": "EEE",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.767,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-003",
+      "buildingId": "EEE",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.533,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-004",
+      "buildingId": "EEE",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 13.15,
+        "w": 16.14,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-005",
+      "buildingId": "EEE",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.15,
+        "y": 13.15,
+        "w": 16.14,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-101",
+      "buildingId": "EEE",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-102",
+      "buildingId": "EEE",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.767,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-103",
+      "buildingId": "EEE",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.533,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-104",
+      "buildingId": "EEE",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 13.15,
+        "w": 16.14,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-105",
+      "buildingId": "EEE",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.15,
+        "y": 13.15,
+        "w": 16.14,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-201",
+      "buildingId": "EEE",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-202",
+      "buildingId": "EEE",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.767,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-203",
+      "buildingId": "EEE",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.533,
+        "y": 0.0,
+        "w": 10.757,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-204",
+      "buildingId": "EEE",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 13.15,
+        "w": 16.14,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "EEE-205",
+      "buildingId": "EEE",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.15,
+        "y": 13.15,
+        "w": 16.14,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "ECE-001",
+      "buildingId": "ECE",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-002",
+      "buildingId": "ECE",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 11.98,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-003",
+      "buildingId": "ECE",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 23.96,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-004",
+      "buildingId": "ECE",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 35.94,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-005",
+      "buildingId": "ECE",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 47.92,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-101",
+      "buildingId": "ECE",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-102",
+      "buildingId": "ECE",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 11.98,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-103",
+      "buildingId": "ECE",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 23.96,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-104",
+      "buildingId": "ECE",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 35.94,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-105",
+      "buildingId": "ECE",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 47.92,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-201",
+      "buildingId": "ECE",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-202",
+      "buildingId": "ECE",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 11.98,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-203",
+      "buildingId": "ECE",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 23.96,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-204",
+      "buildingId": "ECE",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 35.94,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "ECE-205",
+      "buildingId": "ECE",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 47.92,
+        "y": 0,
+        "w": 11.97,
+        "h": 16.09
+      }
+    },
+    {
+      "_id": "PE-001",
+      "buildingId": "PE",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-002",
+      "buildingId": "PE",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 7.66,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-003",
+      "buildingId": "PE",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 15.32,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-004",
+      "buildingId": "PE",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 22.98,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-005",
+      "buildingId": "PE",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 30.64,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-101",
+      "buildingId": "PE",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-102",
+      "buildingId": "PE",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 7.66,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-103",
+      "buildingId": "PE",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 15.32,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-104",
+      "buildingId": "PE",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 22.98,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-105",
+      "buildingId": "PE",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 30.64,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-201",
+      "buildingId": "PE",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-202",
+      "buildingId": "PE",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 7.66,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-203",
+      "buildingId": "PE",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 15.32,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-204",
+      "buildingId": "PE",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 22.98,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "PE-205",
+      "buildingId": "PE",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 30.64,
+        "y": 0,
+        "w": 7.65,
+        "h": 9.49
+      }
+    },
+    {
+      "_id": "CSE-001",
+      "buildingId": "CSE",
+      "floor": 0,
+      "name": "Classroom 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 5.6,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-002",
+      "buildingId": "CSE",
+      "floor": 0,
+      "name": "Computer lab 002",
+      "kind": "lab",
+      "shape": {
+        "x": 14.68,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-003",
+      "buildingId": "CSE",
+      "floor": 0,
+      "name": "Classroom 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 23.76,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-004",
+      "buildingId": "CSE",
+      "floor": 0,
+      "name": "Computer lab 004",
+      "kind": "lab",
+      "shape": {
+        "x": 32.84,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-005",
+      "buildingId": "CSE",
+      "floor": 0,
+      "name": "Seminar hall 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 41.92,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-101",
+      "buildingId": "CSE",
+      "floor": 1,
+      "name": "Computer lab 101",
+      "kind": "lab",
+      "shape": {
+        "x": 5.6,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-102",
+      "buildingId": "CSE",
+      "floor": 1,
+      "name": "Classroom 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 14.68,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-103",
+      "buildingId": "CSE",
+      "floor": 1,
+      "name": "Computer lab 103",
+      "kind": "lab",
+      "shape": {
+        "x": 23.76,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-104",
+      "buildingId": "CSE",
+      "floor": 1,
+      "name": "Classroom 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 32.84,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-105",
+      "buildingId": "CSE",
+      "floor": 1,
+      "name": "Classroom 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 41.92,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-201",
+      "buildingId": "CSE",
+      "floor": 2,
+      "name": "Classroom 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 5.6,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-202",
+      "buildingId": "CSE",
+      "floor": 2,
+      "name": "Computer lab 202",
+      "kind": "lab",
+      "shape": {
+        "x": 14.68,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-203",
+      "buildingId": "CSE",
+      "floor": 2,
+      "name": "Classroom 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 23.76,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-204",
+      "buildingId": "CSE",
+      "floor": 2,
+      "name": "Computer lab 204",
+      "kind": "lab",
+      "shape": {
+        "x": 32.84,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "CSE-205",
+      "buildingId": "CSE",
+      "floor": 2,
+      "name": "Computer lab 205",
+      "kind": "lab",
+      "shape": {
+        "x": 41.92,
+        "y": 0,
+        "w": 8.88,
+        "h": 7.4
+      }
+    },
+    {
+      "_id": "HC-001",
+      "buildingId": "HC",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-002",
+      "buildingId": "HC",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.18,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-003",
+      "buildingId": "HC",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 20.36,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-004",
+      "buildingId": "HC",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 30.54,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-005",
+      "buildingId": "HC",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 40.72,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-101",
+      "buildingId": "HC",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-102",
+      "buildingId": "HC",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.18,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-103",
+      "buildingId": "HC",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 20.36,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-104",
+      "buildingId": "HC",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 30.54,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-105",
+      "buildingId": "HC",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 40.72,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-201",
+      "buildingId": "HC",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-202",
+      "buildingId": "HC",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.18,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-203",
+      "buildingId": "HC",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 20.36,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-204",
+      "buildingId": "HC",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 30.54,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "HC-205",
+      "buildingId": "HC",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 40.72,
+        "y": 0,
+        "w": 10.17,
+        "h": 8.89
+      }
+    },
+    {
+      "_id": "KH-001",
+      "buildingId": "KH",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-002",
+      "buildingId": "KH",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.18,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-003",
+      "buildingId": "KH",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 20.36,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-004",
+      "buildingId": "KH",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 30.54,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-005",
+      "buildingId": "KH",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 40.72,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-101",
+      "buildingId": "KH",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-102",
+      "buildingId": "KH",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.18,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-103",
+      "buildingId": "KH",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 20.36,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-104",
+      "buildingId": "KH",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 30.54,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-105",
+      "buildingId": "KH",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 40.72,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-201",
+      "buildingId": "KH",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-202",
+      "buildingId": "KH",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.18,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-203",
+      "buildingId": "KH",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 20.36,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-204",
+      "buildingId": "KH",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 30.54,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "KH-205",
+      "buildingId": "KH",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 40.72,
+        "y": 0,
+        "w": 10.17,
+        "h": 13.39
+      }
+    },
+    {
+      "_id": "CBH-001",
+      "buildingId": "CBH",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-002",
+      "buildingId": "CBH",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.967,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-003",
+      "buildingId": "CBH",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.933,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-004",
+      "buildingId": "CBH",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 16.15,
+        "w": 16.44,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-005",
+      "buildingId": "CBH",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.45,
+        "y": 16.15,
+        "w": 16.44,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-101",
+      "buildingId": "CBH",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-102",
+      "buildingId": "CBH",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.967,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-103",
+      "buildingId": "CBH",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.933,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-104",
+      "buildingId": "CBH",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 16.15,
+        "w": 16.44,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-105",
+      "buildingId": "CBH",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.45,
+        "y": 16.15,
+        "w": 16.44,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-201",
+      "buildingId": "CBH",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-202",
+      "buildingId": "CBH",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.967,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-203",
+      "buildingId": "CBH",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.933,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-204",
+      "buildingId": "CBH",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 16.15,
+        "w": 16.44,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "CBH-205",
+      "buildingId": "CBH",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.45,
+        "y": 16.15,
+        "w": 16.44,
+        "h": 13.14
+      }
+    },
+    {
+      "_id": "MATH-001",
+      "buildingId": "MATH",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-002",
+      "buildingId": "MATH",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.967,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-003",
+      "buildingId": "MATH",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.933,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-004",
+      "buildingId": "MATH",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 11.2,
+        "w": 16.44,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-005",
+      "buildingId": "MATH",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.45,
+        "y": 11.2,
+        "w": 16.44,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-101",
+      "buildingId": "MATH",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-102",
+      "buildingId": "MATH",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.967,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-103",
+      "buildingId": "MATH",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.933,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-104",
+      "buildingId": "MATH",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 11.2,
+        "w": 16.44,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-105",
+      "buildingId": "MATH",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.45,
+        "y": 11.2,
+        "w": 16.44,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-201",
+      "buildingId": "MATH",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-202",
+      "buildingId": "MATH",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 10.967,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-203",
+      "buildingId": "MATH",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 21.933,
+        "y": 0.0,
+        "w": 10.957,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-204",
+      "buildingId": "MATH",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 11.2,
+        "w": 16.44,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "MATH-205",
+      "buildingId": "MATH",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 16.45,
+        "y": 11.2,
+        "w": 16.44,
+        "h": 8.19
+      }
+    },
+    {
+      "_id": "CHEM-001",
+      "buildingId": "CHEM",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 7.957,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-002",
+      "buildingId": "CHEM",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 7.967,
+        "y": 0.0,
+        "w": 7.957,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-003",
+      "buildingId": "CHEM",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 15.933,
+        "y": 0.0,
+        "w": 7.957,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-004",
+      "buildingId": "CHEM",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 13.15,
+        "w": 11.94,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-005",
+      "buildingId": "CHEM",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 11.95,
+        "y": 13.15,
+        "w": 11.94,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-101",
+      "buildingId": "CHEM",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 7.957,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-102",
+      "buildingId": "CHEM",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 7.967,
+        "y": 0.0,
+        "w": 7.957,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-103",
+      "buildingId": "CHEM",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 15.933,
+        "y": 0.0,
+        "w": 7.957,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-104",
+      "buildingId": "CHEM",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 13.15,
+        "w": 11.94,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-105",
+      "buildingId": "CHEM",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 11.95,
+        "y": 13.15,
+        "w": 11.94,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-201",
+      "buildingId": "CHEM",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 7.957,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-202",
+      "buildingId": "CHEM",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 7.967,
+        "y": 0.0,
+        "w": 7.957,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-203",
+      "buildingId": "CHEM",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 15.933,
+        "y": 0.0,
+        "w": 7.957,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-204",
+      "buildingId": "CHEM",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 13.15,
+        "w": 11.94,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "CHEM-205",
+      "buildingId": "CHEM",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 11.95,
+        "y": 13.15,
+        "w": 11.94,
+        "h": 10.14
+      }
+    },
+    {
+      "_id": "TELE-001",
+      "buildingId": "TELE",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-002",
+      "buildingId": "TELE",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 6.58,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-003",
+      "buildingId": "TELE",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 13.16,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-004",
+      "buildingId": "TELE",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 19.74,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-005",
+      "buildingId": "TELE",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 26.32,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-101",
+      "buildingId": "TELE",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-102",
+      "buildingId": "TELE",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 6.58,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-103",
+      "buildingId": "TELE",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 13.16,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-104",
+      "buildingId": "TELE",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 19.74,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-105",
+      "buildingId": "TELE",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 26.32,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-201",
+      "buildingId": "TELE",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-202",
+      "buildingId": "TELE",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 6.58,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-203",
+      "buildingId": "TELE",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 13.16,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-204",
+      "buildingId": "TELE",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 19.74,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "TELE-205",
+      "buildingId": "TELE",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 26.32,
+        "y": 0,
+        "w": 6.57,
+        "h": 15.49
+      }
+    },
+    {
+      "_id": "MING-001",
+      "buildingId": "MING",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 0.0,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-002",
+      "buildingId": "MING",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 3.1,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-003",
+      "buildingId": "MING",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 6.2,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-004",
+      "buildingId": "MING",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 9.3,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-005",
+      "buildingId": "MING",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 12.4,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-101",
+      "buildingId": "MING",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 0.0,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-102",
+      "buildingId": "MING",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 3.1,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-103",
+      "buildingId": "MING",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 6.2,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-104",
+      "buildingId": "MING",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 9.3,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-105",
+      "buildingId": "MING",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 12.4,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-201",
+      "buildingId": "MING",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 0.0,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-202",
+      "buildingId": "MING",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 3.1,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-203",
+      "buildingId": "MING",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 6.2,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-204",
+      "buildingId": "MING",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 9.3,
+        "w": 14.89,
+        "h": 3.09
+      }
+    },
+    {
+      "_id": "MING-205",
+      "buildingId": "MING",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "canteen",
+      "shape": {
+        "x": 0,
+        "y": 12.4,
+        "w": 14.89,
+        "h": 3.09
       }
     },
     {
       "_id": "LIB-001",
       "buildingId": "LIB",
       "floor": 0,
-      "name": "Reading Zone 1",
+      "name": "Room 001",
       "kind": "library",
       "shape": {
-        "x": 0,
-        "y": 0,
-        "w": 20,
-        "h": 20
+        "x": 0.0,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 7.74
       }
     },
     {
       "_id": "LIB-002",
       "buildingId": "LIB",
       "floor": 0,
-      "name": "Reading Zone 2",
+      "name": "Room 002",
       "kind": "library",
       "shape": {
-        "x": 20,
-        "y": 0,
-        "w": 20,
-        "h": 20
+        "x": 18.667,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 7.74
+      }
+    },
+    {
+      "_id": "LIB-003",
+      "buildingId": "LIB",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "library",
+      "shape": {
+        "x": 37.333,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 7.74
+      }
+    },
+    {
+      "_id": "LIB-004",
+      "buildingId": "LIB",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "library",
+      "shape": {
+        "x": 0.0,
+        "y": 10.75,
+        "w": 27.99,
+        "h": 7.74
+      }
+    },
+    {
+      "_id": "LIB-005",
+      "buildingId": "LIB",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "library",
+      "shape": {
+        "x": 28.0,
+        "y": 10.75,
+        "w": 27.99,
+        "h": 7.74
       }
     },
     {
       "_id": "LIB-101",
       "buildingId": "LIB",
       "floor": 1,
-      "name": "Reading Zone 3",
+      "name": "Room 101",
       "kind": "library",
       "shape": {
-        "x": 0,
-        "y": 0,
-        "w": 20,
-        "h": 20
+        "x": 0.0,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 7.74
       }
     },
     {
       "_id": "LIB-102",
       "buildingId": "LIB",
       "floor": 1,
-      "name": "Reading Zone 4",
+      "name": "Room 102",
       "kind": "library",
       "shape": {
-        "x": 20,
-        "y": 0,
-        "w": 20,
-        "h": 20
+        "x": 18.667,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 7.74
       }
     },
     {
-      "_id": "CAN-001",
-      "buildingId": "CAN",
-      "floor": 0,
-      "name": "Main Hall",
-      "kind": "canteen",
+      "_id": "LIB-103",
+      "buildingId": "LIB",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "library",
       "shape": {
-        "x": 0,
-        "y": 0,
-        "w": 28,
-        "h": 12
+        "x": 37.333,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 7.74
+      }
+    },
+    {
+      "_id": "LIB-104",
+      "buildingId": "LIB",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "library",
+      "shape": {
+        "x": 0.0,
+        "y": 10.75,
+        "w": 27.99,
+        "h": 7.74
+      }
+    },
+    {
+      "_id": "LIB-105",
+      "buildingId": "LIB",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "library",
+      "shape": {
+        "x": 28.0,
+        "y": 10.75,
+        "w": 27.99,
+        "h": 7.74
+      }
+    },
+    {
+      "_id": "LIB-201",
+      "buildingId": "LIB",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "library",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 7.74
+      }
+    },
+    {
+      "_id": "LIB-202",
+      "buildingId": "LIB",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "library",
+      "shape": {
+        "x": 18.667,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 7.74
+      }
+    },
+    {
+      "_id": "LIB-203",
+      "buildingId": "LIB",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "library",
+      "shape": {
+        "x": 37.333,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 7.74
+      }
+    },
+    {
+      "_id": "LIB-204",
+      "buildingId": "LIB",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "library",
+      "shape": {
+        "x": 0.0,
+        "y": 10.75,
+        "w": 27.99,
+        "h": 7.74
+      }
+    },
+    {
+      "_id": "LIB-205",
+      "buildingId": "LIB",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "library",
+      "shape": {
+        "x": 28.0,
+        "y": 10.75,
+        "w": 27.99,
+        "h": 7.74
+      }
+    },
+    {
+      "_id": "ISE-001",
+      "buildingId": "ISE",
+      "floor": 0,
+      "name": "Room 001",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-002",
+      "buildingId": "ISE",
+      "floor": 0,
+      "name": "Room 002",
+      "kind": "classroom",
+      "shape": {
+        "x": 18.667,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-003",
+      "buildingId": "ISE",
+      "floor": 0,
+      "name": "Room 003",
+      "kind": "classroom",
+      "shape": {
+        "x": 37.333,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-004",
+      "buildingId": "ISE",
+      "floor": 0,
+      "name": "Room 004",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 13.9,
+        "w": 27.99,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-005",
+      "buildingId": "ISE",
+      "floor": 0,
+      "name": "Room 005",
+      "kind": "classroom",
+      "shape": {
+        "x": 28.0,
+        "y": 13.9,
+        "w": 27.99,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-101",
+      "buildingId": "ISE",
+      "floor": 1,
+      "name": "Room 101",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-102",
+      "buildingId": "ISE",
+      "floor": 1,
+      "name": "Room 102",
+      "kind": "classroom",
+      "shape": {
+        "x": 18.667,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-103",
+      "buildingId": "ISE",
+      "floor": 1,
+      "name": "Room 103",
+      "kind": "classroom",
+      "shape": {
+        "x": 37.333,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-104",
+      "buildingId": "ISE",
+      "floor": 1,
+      "name": "Room 104",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 13.9,
+        "w": 27.99,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-105",
+      "buildingId": "ISE",
+      "floor": 1,
+      "name": "Room 105",
+      "kind": "classroom",
+      "shape": {
+        "x": 28.0,
+        "y": 13.9,
+        "w": 27.99,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-201",
+      "buildingId": "ISE",
+      "floor": 2,
+      "name": "Room 201",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-202",
+      "buildingId": "ISE",
+      "floor": 2,
+      "name": "Room 202",
+      "kind": "classroom",
+      "shape": {
+        "x": 18.667,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-203",
+      "buildingId": "ISE",
+      "floor": 2,
+      "name": "Room 203",
+      "kind": "classroom",
+      "shape": {
+        "x": 37.333,
+        "y": 0.0,
+        "w": 18.657,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-204",
+      "buildingId": "ISE",
+      "floor": 2,
+      "name": "Room 204",
+      "kind": "classroom",
+      "shape": {
+        "x": 0.0,
+        "y": 13.9,
+        "w": 27.99,
+        "h": 10.89
+      }
+    },
+    {
+      "_id": "ISE-205",
+      "buildingId": "ISE",
+      "floor": 2,
+      "name": "Room 205",
+      "kind": "classroom",
+      "shape": {
+        "x": 28.0,
+        "y": 13.9,
+        "w": 27.99,
+        "h": 10.89
       }
     }
   ]

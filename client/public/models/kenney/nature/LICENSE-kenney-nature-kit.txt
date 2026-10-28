@@ -1,0 +1,4 @@
+Nature Kit — created/distributed by Kenney (www.kenney.nl)
+License: Creative Commons Zero (CC0) — http://creativecommons.org/publicdomain/zero/1.0/
+Free to use in personal, educational and commercial projects. Credit is appreciated, not required.
+Files: tree_oak.glb, tree_pineDefaultA.glb

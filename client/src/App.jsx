@@ -8,6 +8,8 @@ import { TestPage } from './pages/TestPage.jsx';
 import { PickRoomPage } from './pages/PickRoomPage.jsx';
 import { AdvisorPage } from './pages/AdvisorPage.jsx';
 import { AdminPage } from './pages/AdminPage.jsx';
+import PlayPage from './game/PlayPage.jsx'; // GAME
+import OfflineGuard from './game/OfflineGuard.jsx'; // GAME
 
 const ThreeView = lazy(() => import('./ThreeView.jsx'));
 
@@ -29,6 +31,7 @@ export default function App() {
           <ThreeView view={view} net={net} lite={lite} />
         </Suspense>
         <LiteToggle lite={lite} setLite={setLite} />
+        <OfflineGuard />
       </div>
     );
   }
@@ -36,6 +39,7 @@ export default function App() {
     <div className="app-page">
       {view.kind === 'test' && <TestPage roomId={view.id} />}
       {view.kind === 'pick' && <PickRoomPage />}
+      {view.kind === 'play' && <PlayPage />}
       {view.kind === 'advisor' && <AdvisorPage />}
       {view.kind === 'admin' && <AdminPage />}
       {view.kind === 'notfound' && (
@@ -44,6 +48,7 @@ export default function App() {
           <Link to="/">Go to the campus map</Link>
         </main>
       )}
+      <OfflineGuard />
       <nav className="page-nav">
         <Link to="/">← Campus map</Link>
       </nav>

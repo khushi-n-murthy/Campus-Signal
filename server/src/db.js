@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
-import { Building, Room, Measurement } from './models.js';
+import { Building, Room, Measurement, Player, Run, RexEvent } from './models.js';
 
 export async function connectDb(uri, dbName) {
   await mongoose.connect(uri, { dbName, serverSelectionTimeoutMS: 8000 });
-  await Promise.all([Building.init(), Room.init(), Measurement.init()]); // builds indexes
+  await Promise.all([Building.init(), Room.init(), Measurement.init(), Player.init(), Run.init(), RexEvent.init()]); // builds indexes
   return mongoose.connection;
 }
 
