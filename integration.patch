@@ -1,0 +1,434 @@
+diff -ruN a/client/index.html b/client/index.html
+--- a/client/index.html	2026-10-28 05:20:04.121956829 +0000
++++ b/client/index.html	2026-10-28 05:20:04.123570690 +0000
+@@ -4,7 +4,7 @@
+     <meta charset="UTF-8" />
+     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+-    <meta name="theme-color" content="#070b16" />
++    <meta name="theme-color" content="#050b26" />
+     <title>CampusSignal</title>
+   </head>
+   <body>
+diff -ruN a/client/package.json b/client/package.json
+--- a/client/package.json	2026-10-28 05:20:04.132178857 +0000
++++ b/client/package.json	2026-10-28 05:20:04.134720876 +0000
+@@ -10,6 +10,8 @@
+     "preview": "vite preview"
+   },
+   "dependencies": {
++    "@fontsource/press-start-2p": "^5.3.0",
++    "@fontsource/vt323": "^5.3.0",
+     "@react-three/drei": "^10.7.9",
+     "@react-three/fiber": "^9.8.2",
+     "@react-three/postprocessing": "^3.2.2",
+diff -ruN a/client/src/App.jsx b/client/src/App.jsx
+--- a/client/src/App.jsx	2026-10-28 05:20:04.142998895 +0000
++++ b/client/src/App.jsx	2026-10-28 05:20:04.145103948 +0000
+@@ -8,6 +8,8 @@
+ import { PickRoomPage } from './pages/PickRoomPage.jsx';
+ import { AdvisorPage } from './pages/AdvisorPage.jsx';
+ import { AdminPage } from './pages/AdminPage.jsx';
++import PlayPage from './game/PlayPage.jsx'; // GAME
++import OfflineGuard from './game/OfflineGuard.jsx'; // GAME
+ 
+ const ThreeView = lazy(() => import('./ThreeView.jsx'));
+ 
+@@ -29,6 +31,7 @@
+           <ThreeView view={view} net={net} lite={lite} />
+         </Suspense>
+         <LiteToggle lite={lite} setLite={setLite} />
++        <OfflineGuard />
+       </div>
+     );
+   }
+@@ -36,6 +39,7 @@
+     <div className="app-page">
+       {view.kind === 'test' && <TestPage roomId={view.id} />}
+       {view.kind === 'pick' && <PickRoomPage />}
++      {view.kind === 'play' && <PlayPage />}
+       {view.kind === 'advisor' && <AdvisorPage />}
+       {view.kind === 'admin' && <AdminPage />}
+       {view.kind === 'notfound' && (
+@@ -44,6 +48,7 @@
+           <Link to="/">Go to the campus map</Link>
+         </main>
+       )}
++      <OfflineGuard />
+       <nav className="page-nav">
+         <Link to="/">← Campus map</Link>
+       </nav>
+diff -ruN a/client/src/ThreeView.jsx b/client/src/ThreeView.jsx
+--- a/client/src/ThreeView.jsx	2026-10-28 05:20:04.153204268 +0000
++++ b/client/src/ThreeView.jsx	2026-10-28 05:20:04.155313090 +0000
+@@ -15,6 +15,10 @@
+ import { LabelLayerContext } from './scenes/Label.jsx';
+ import { Legend, NetLink, NetworkCard, NetworkFilter, ScoreBadge } from './components/Bits.jsx';
+ import { ForecastStrip } from './components/ForecastStrip.jsx';
++import PlayerChip from './game/PlayerChip.jsx'; // GAME
++import RoomGameBox from './game/RoomGameBox.jsx'; // GAME
++import CampusGameBox from './game/CampusGameBox.jsx'; // GAME
++import LiveFeed from './game/LiveFeed.jsx'; // GAME
+ 
+ const plural = (n, word) => `${n} ${word}${n === 1 ? '' : 's'}`;
+ 
+@@ -41,6 +45,7 @@
+       </nav>
+       <NetworkFilter />
+       <div className="actions">
++        <PlayerChip /> {/* GAME */}
+         <Link to="/test" className="button small">I'm here: test</Link>
+         <Link to="/advisor" className="link">SIM Advisor</Link>
+         <Link to="/admin" className="link">IT report</Link>
+@@ -55,6 +60,7 @@
+     <aside className="panel">
+       <h2>Campus</h2>
+       <p className="muted small">Tap a building to open its floors.</p>
++      <CampusGameBox /> {/* GAME */}
+       {sorted.map((b) => (
+         <NetLink key={b._id} to={`/b/${b._id}`} className="list-row">
+           <span>
+@@ -102,6 +108,7 @@
+         {room.building?.name} · Floor {room.floor} · {room.totalSamples} tests in the last {room.windowDays} days
+       </p>
+       <Link to={`/t/${room._id}`} className="button">I'm in this room: test now</Link>
++      <RoomGameBox roomId={room._id} roomName={room.name} /> {/* GAME */}
+       {room.networks.length === 0 && <p>No tests here yet. Be the first!</p>}
+       {room.networks.map((n) => (
+         <NetworkCard key={n.carrier} n={n} />
+@@ -188,6 +195,7 @@
+       {view.kind === 'building' && building.data && <BuildingPanel detail={building.data} practice={health.data?.practiceData} />}
+       {view.kind === 'room' && room.data && <RoomPanel room={room.data} forecast={forecast.data} shown={shownNetworks.map((n) => n.carrier)} practice={health.data?.practiceData} />}
+       <Legend practice={health.data?.practiceData} />
++      <LiveFeed /> {/* GAME */}
+     </>
+   );
+ }
+diff -ruN a/client/src/lib/api.js b/client/src/lib/api.js
+--- a/client/src/lib/api.js	2026-10-28 05:20:04.163224402 +0000
++++ b/client/src/lib/api.js	2026-10-28 05:20:04.165249784 +0000
+@@ -1,13 +1,13 @@
+ // Small helpers for talking to the Express API. Errors carry the server's message.
+-export async function getJSON(url, { signal } = {}) {
+-  const res = await fetch(url, { signal, headers: { Accept: 'application/json' } });
++export async function getJSON(url, { signal, headers } = {}) {
++  const res = await fetch(url, { signal, headers: { Accept: 'application/json', ...headers } });
+   return handle(res);
+ }
+ 
+-export async function postJSON(url, body) {
++export async function postJSON(url, body, { method = 'POST', headers } = {}) {
+   const res = await fetch(url, {
+-    method: 'POST',
+-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
++    method,
++    headers: { 'Content-Type': 'application/json', Accept: 'application/json', ...headers },
+     body: JSON.stringify(body),
+   });
+   return handle(res);
+diff -ruN a/client/src/lib/live.jsx b/client/src/lib/live.jsx
+--- a/client/src/lib/live.jsx	2026-10-28 05:20:04.173180310 +0000
++++ b/client/src/lib/live.jsx	2026-10-28 05:20:04.174912211 +0000
+@@ -2,15 +2,17 @@
+ import { createContext, useContext, useEffect, useRef, useState } from 'react';
+ import { io } from 'socket.io-client';
+ 
+-const LiveContext = createContext({ last: null, connected: false });
++const LiveContext = createContext({ last: null, connected: false, feed: [] });
+ 
+ export function LiveProvider({ children }) {
+-  const [state, setState] = useState({ last: null, connected: false });
++  const [state, setState] = useState({ last: null, connected: false, feed: [] });
+   useEffect(() => {
+     const socket = io({ reconnectionDelayMax: 10000 });
+     socket.on('connect', () => setState((s) => ({ ...s, connected: true })));
+     socket.on('disconnect', () => setState((s) => ({ ...s, connected: false })));
+     socket.on('measurement:new', (event) => setState((s) => ({ ...s, last: { ...event, receivedAt: Date.now() } })));
++    // GAME: scans and Rex runs by other players, for the live ticker
++    socket.on('game:event', (event) => setState((s) => ({ ...s, feed: [{ ...event, id: `${Date.now()}-${Math.random()}`, receivedAt: Date.now() }, ...s.feed].slice(0, 5) })));
+     return () => socket.close();
+   }, []);
+   return <LiveContext.Provider value={state}>{children}</LiveContext.Provider>;
+diff -ruN a/client/src/lib/routes.js b/client/src/lib/routes.js
+--- a/client/src/lib/routes.js	2026-10-28 05:20:04.181410509 +0000
++++ b/client/src/lib/routes.js	2026-10-28 05:20:04.183084886 +0000
+@@ -16,6 +16,7 @@
+   if (parts[0] === 'r' && parts[1]) return { kind: 'room', id: parts[1].toUpperCase() };
+   if (parts[0] === 't' && parts[1]) return { kind: 'test', id: parts[1].toUpperCase() };
+   if (parts[0] === 'test') return { kind: 'pick' };
++  if (parts[0] === 'play') return { kind: 'play' }; // GAME
+   if (parts[0] === 'advisor') return { kind: 'advisor' };
+   if (parts[0] === 'admin') return { kind: 'admin' };
+   return { kind: 'notfound' };
+diff -ruN a/client/src/main.jsx b/client/src/main.jsx
+--- a/client/src/main.jsx	2026-10-28 05:20:04.189287134 +0000
++++ b/client/src/main.jsx	2026-10-28 05:20:04.191162568 +0000
+@@ -2,14 +2,22 @@
+ import { BrowserRouter } from 'react-router';
+ import { LiveProvider } from './lib/live.jsx';
+ import App from './App.jsx';
++import { GameProvider } from './game/GameContext.jsx';
++import GameLayer from './game/GameLayer.jsx';
++import '@fontsource/press-start-2p'; // GAME: pixel fonts, bundled so they also work offline
++import '@fontsource/vt323';
+ import './styles.css';
++import './game/neon.css'; // GAME: neon pixel theme (loaded after styles.css so it wins)
+ 
+ // No <StrictMode> on purpose: it runs every effect twice, which tears down and rebuilds the WebGL
+ // canvas and its floating labels (in testing, a network label went missing with it on).
+ createRoot(document.getElementById('root')).render(
+   <LiveProvider>
+     <BrowserRouter>
+-      <App />
++      <GameProvider>
++        <App />
++        <GameLayer />
++      </GameProvider>
+     </BrowserRouter>
+   </LiveProvider>,
+ );
+diff -ruN a/client/src/pages/TestPage.jsx b/client/src/pages/TestPage.jsx
+--- a/client/src/pages/TestPage.jsx	2026-10-28 05:20:04.197587929 +0000
++++ b/client/src/pages/TestPage.jsx	2026-10-28 05:20:04.199322346 +0000
+@@ -7,6 +7,8 @@
+ import { runSpeedTest } from '../lib/speedtest.js';
+ import { scoreHex, scoreWord } from '../lib/colors.js';
+ import { ScoreBadge } from '../components/Bits.jsx';
++import { useGame } from '../game/GameContext.jsx'; // GAME
++import DinoRun from '../game/DinoRun.jsx'; // GAME
+ 
+ const PHASES = { ping: 'Measuring delay', download: 'Downloading', upload: 'Uploading', saving: 'Saving' };
+ const ORDER = ['ping', 'download', 'upload', 'saving'];
+@@ -27,6 +29,8 @@
+   const room = useApi(`/api/rooms/${encodeURIComponent(id)}`);
+   const who = useApi('/api/whoami');
+   const [status, setStatus] = useState({ step: 'idle' });
++  const game = useGame(); // GAME
++  const [rexOpen, setRexOpen] = useState(false); // GAME
+ 
+   async function start() {
+     setStatus({ step: 'running', phase: 'ping', fraction: 0, text: '' });
+@@ -35,6 +39,8 @@
+       setStatus({ step: 'running', phase: 'saving', fraction: 1, text: '' });
+       const saved = await postJSON('/api/measurements', { roomId: id, device: deviceId(), ...result });
+       setStatus({ step: 'done', saved });
++      if (saved.reward) game?.applyReward(saved.reward); // GAME: XP popup
++      if (saved.score < 30) setRexOpen(true); // GAME: weak signal, so Rex opens by himself (the player can press End)
+     } catch (err) {
+       setStatus({ step: 'error', message: err.message });
+     }
+@@ -53,6 +59,10 @@
+   const overall = status.step === 'running' ? (ORDER.indexOf(status.phase) + status.fraction) / ORDER.length : status.step === 'done' ? 1 : 0;
+   return (
+     <main className="page test">
++      {rexOpen && status.step === 'done' && (
++        <DinoRun kind="auto" roomId={id} roomName={r?.name} reason="Weak signal here! Rex has found you. Play to pass the time, or press End." onClose={() => setRexOpen(false)}
++          stats={{ score: status.saved.score, latencyMs: status.saved.latencyMs, jitterMs: status.saved.jitterMs, lossPct: status.saved.lossPct }} />
++      )} {/* GAME */}
+       <p className="eyebrow">CampusSignal · room test</p>
+       <h1>{r ? r.name : '…'}</h1>
+       <p className="muted">{r ? `${r.building?.name ?? r.buildingId} · Floor ${r.floor}` : ''}</p>
+@@ -97,6 +107,9 @@
+           <p>
+             Saved for <b>{status.saved.carrier}</b> in this room. Thank you!
+           </p>
++          {game && !game.player && !game.loading && ( // GAME: nudge guests to make an explorer
++            <p className="gm-note">Playing? <button type="button" className="link" onClick={() => game.setScreen('title')}>Create an explorer</button> to earn XP for scans like this one.</p>
++          )}
+           <Link className="button" to={`/r/${encodeURIComponent(id)}`}>
+             See this room in 3D
+           </Link>
+diff -ruN a/server/package.json b/server/package.json
+--- a/server/package.json	2026-10-28 05:20:04.205500668 +0000
++++ b/server/package.json	2026-10-28 05:20:04.207290348 +0000
+@@ -20,7 +20,9 @@
+     "verify:7": "node verify/phase7-qr.js",
+     "verify:8": "node verify/phase8-client.js",
+     "verify:9": "node verify/phase9-deploy.js",
+-    "verify": "node verify/all.js"
++    "verify": "node verify/all.js",
++    "verify:10": "node verify/phase10-game.js",
++    "verify:game": "node verify/phase10-game.js --no-db"
+   },
+   "type": "module",
+   "dependencies": {
+diff -ruN a/server/src/app.js b/server/src/app.js
+--- a/server/src/app.js	2026-10-28 05:20:04.214814193 +0000
++++ b/server/src/app.js	2026-10-28 05:20:04.216969625 +0000
+@@ -11,6 +11,9 @@
+ import { measurementsRouter } from './routes/measurements.js'; // add in Phase 4
+ import { campusRouter } from './routes/campus.js'; // add in Phase 5
+ import { insightsRouter } from './routes/insights.js'; // add in Phase 5
++import { gameRouter } from './routes/game.js'; // GAME
++import { createGameService } from './game/service.js'; // GAME
++import { Player, Run, RexEvent, Measurement, Room } from './models.js'; // GAME
+ 
+ const here = path.dirname(fileURLToPath(import.meta.url));
+ export const CLIENT_DIST = path.resolve(here, '../../client/dist');
+@@ -23,6 +26,8 @@
+   });
+   const campusList = config.campusCidrs.length ? buildCampusList(config.campusCidrs) : null;
+ 
++  const game = createGameService({ models: { Player, Run, RexEvent, Measurement, Room }, config }); // GAME
++
+   const trust = config.trustProxy;
+   app.set('trust proxy', /^\d+$/.test(trust) ? Number(trust) : trust === 'true' ? true : trust);
+   app.disable('x-powered-by');
+@@ -34,7 +39,8 @@
+   // Speed-test routes come before express.json so uploads are never parsed as JSON.
+   app.use('/api', speedtestRouter({ lookup, campusList }));
+   app.use(express.json({ limit: '64kb' }));
+-  app.use('/api', measurementsRouter({ config, lookup, campusList, io })); // add in Phase 4
++  app.use('/api', measurementsRouter({ config, lookup, campusList, io, game })); // add in Phase 4
++  app.use('/api', gameRouter({ config, lookup, campusList, io, game })); // GAME
+   app.use('/api', campusRouter(config)); // add in Phase 5
+   app.use('/api', insightsRouter(config)); // add in Phase 5
+ 
+diff -ruN a/server/src/db.js b/server/src/db.js
+--- a/server/src/db.js	2026-10-28 05:20:04.225572156 +0000
++++ b/server/src/db.js	2026-10-28 05:20:04.227834021 +0000
+@@ -1,9 +1,9 @@
+ import mongoose from 'mongoose';
+-import { Building, Room, Measurement } from './models.js';
++import { Building, Room, Measurement, Player, Run, RexEvent } from './models.js';
+ 
+ export async function connectDb(uri, dbName) {
+   await mongoose.connect(uri, { dbName, serverSelectionTimeoutMS: 8000 });
+-  await Promise.all([Building.init(), Room.init(), Measurement.init()]); // builds indexes
++  await Promise.all([Building.init(), Room.init(), Measurement.init(), Player.init(), Run.init(), RexEvent.init()]); // builds indexes
+   return mongoose.connection;
+ }
+ 
+diff -ruN a/server/src/models.js b/server/src/models.js
+--- a/server/src/models.js	2026-10-28 05:20:04.236782183 +0000
++++ b/server/src/models.js	2026-10-28 05:20:04.238943213 +0000
+@@ -70,3 +70,62 @@
+ export const Building = model('Building', buildingSchema);
+ export const Room = model('Room', roomSchema);
+ export const Measurement = model('Measurement', measurementSchema);
++
++// ---------- the game ----------
++// A player is a nickname + character on top of the same anonymous device id. No real names, no IPs.
++const playerSchema = new Schema(
++  {
++    device: { type: String, required: true, unique: true }, // salted hash, same as measurements
++    nickname: { type: String, required: true },
++    nickLower: { type: String, required: true, unique: true },
++    avatar: {
++      body: Number, skin: Number, hairStyle: Number, hairColor: Number, outfit: Number, outfitColor: Number, accessory: Number,
++    },
++    team: { type: String, default: null }, // the network they last tested on
++    xp: { type: Number, default: 0 },
++    scans: { type: Number, default: 0 },
++    rexSightings: { type: Number, default: 0 },
++    roomsSeen: { type: [String], default: [] },
++    streak: { type: Number, default: 0 },
++    lastDay: { type: String, default: null },
++    dinoBest: { type: Number, default: 0 },
++    badges: { type: [String], default: [] },
++    daily: {
++      day: String, scans: Number, rooms: [String], newRooms: Number, dinoXp: Number, bestRun: Number, quests: [String],
++    },
++    createdAt: { type: Date, default: Date.now },
++  },
++  { versionKey: false },
++);
++playerSchema.index({ xp: -1 });
++
++// Best Rex run per player per room.
++const runSchema = new Schema(
++  {
++    roomId: { type: String, required: true },
++    device: { type: String, required: true },
++    nickname: { type: String, required: true },
++    distance: { type: Number, required: true },
++    updatedAt: { type: Date, default: Date.now },
++  },
++  { versionKey: false },
++);
++runSchema.index({ roomId: 1, device: 1 }, { unique: true });
++runSchema.index({ roomId: 1, distance: -1 });
++
++export const Player = model('Player', playerSchema);
++export const Run = model('Run', runSchema);
++
++// Every time Rex's Lair opened: by a weak scan ('auto'), a dead-zone button ('manual') or no connection ('offline').
++const rexEventSchema = new Schema(
++  {
++    roomId: { type: String, default: null },
++    device: { type: String, required: true },
++    kind: { type: String, enum: ['auto', 'manual', 'offline'], required: true },
++    played: { type: Boolean, default: false }, // false = the player pressed End without running
++    at: { type: Date, default: Date.now },
++  },
++  { versionKey: false },
++);
++rexEventSchema.index({ roomId: 1, at: -1 });
++export const RexEvent = model('RexEvent', rexEventSchema);
+diff -ruN a/server/src/routes/measurements.js b/server/src/routes/measurements.js
+--- a/server/src/routes/measurements.js	2026-10-28 05:20:04.247531082 +0000
++++ b/server/src/routes/measurements.js	2026-10-28 05:20:04.249500670 +0000
+@@ -10,7 +10,7 @@
+   return crypto.createHash('sha256').update(`${salt}:${device}`).digest('hex').slice(0, 32);
+ }
+ 
+-export function measurementsRouter({ config, lookup, campusList, io }) {
++export function measurementsRouter({ config, lookup, campusList, io, game }) {
+   const r = Router();
+ 
+   r.post('/measurements', async (req, res) => {
+@@ -34,6 +34,8 @@
+     const net = classifyIp(req.ip, lookup, campusList);
+     const now = new Date();
+     const { hour, dow } = istParts(now);
++    // GAME: what this room looked like before this scan (first scan? new network? stale?)
++    const history = game ? await game.roomHistory(room._id).catch(() => null) : null;
+     const doc = await Measurement.create({
+       roomId: room._id,
+       buildingId: room.buildingId,
+@@ -62,7 +64,21 @@
+       at: doc.createdAt,
+     };
+     io?.emit('measurement:new', event);
+-    res.status(201).json({ ...event, id: doc._id, downMbps: doc.downMbps, upMbps: doc.upMbps, latencyMs: doc.latencyMs, jitterMs: doc.jitterMs, lossPct: doc.lossPct });
++
++    // GAME: XP, streaks, quests, badges. A game problem must never lose the saved test.
++    let reward = null;
++    if (game && history) {
++      try {
++        const out = await game.rewardScan({ device: value.device, roomId: room._id, carrier: net.carrier, score: doc.score, history, now });
++        if (out) {
++          reward = out.reward;
++          io?.emit('game:event', { type: 'scan', nickname: out.player.nickname, team: out.player.team, roomId: room._id, roomName: room.name, xp: reward.xp, score: doc.score, rex: reward.rex, first: reward.firstInRoom, at: now });
++        }
++      } catch (err) {
++        console.error('game reward failed', err);
++      }
++    }
++    res.status(201).json({ ...event, id: doc._id, downMbps: doc.downMbps, upMbps: doc.upMbps, latencyMs: doc.latencyMs, jitterMs: doc.jitterMs, lossPct: doc.lossPct, reward });
+   });
+ 
+   return r;
+diff -ruN a/server/verify/all.js b/server/verify/all.js
+--- a/server/verify/all.js	2026-10-28 05:20:04.257500671 +0000
++++ b/server/verify/all.js	2026-10-28 05:20:04.260143057 +0000
+@@ -1,11 +1,11 @@
+-// Runs phases 0-8 in order and stops at the first one that fails. (Phase 9 needs a deployed URL.)
++// Runs phases 0-8 and 10 (the game) in order and stops at the first one that fails. (Phase 9 needs a deployed URL.)
+ import { spawnSync } from 'node:child_process';
+ import fs from 'node:fs';
+ import path from 'node:path';
+ import { fileURLToPath } from 'node:url';
+ 
+ const here = path.dirname(fileURLToPath(import.meta.url));
+-const files = fs.readdirSync(here).filter((f) => /^phase[0-8]-.*\.js$/.test(f)).sort();
++const files = fs.readdirSync(here).filter((f) => /^phase(?:[0-8]|10)-.*\.js$/.test(f)).sort((a, b) => parseInt(a.slice(5), 10) - parseInt(b.slice(5), 10));
+ for (const file of files) {
+   const r = spawnSync(process.execPath, [path.join(here, file)], { stdio: 'inherit' });
+   if (r.status !== 0) {
+@@ -13,4 +13,4 @@
+     process.exit(1);
+   }
+ }
+-console.log('\nALL LOCAL PHASES PASSED (0-8). After deploying, run: npm run verify:9 -- https://your-site');
++console.log('\nALL LOCAL PHASES PASSED (0-8 and 10). After deploying, run: npm run verify:9 -- https://your-site');
